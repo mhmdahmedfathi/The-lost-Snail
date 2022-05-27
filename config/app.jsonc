@@ -11,7 +11,7 @@
     },
     "scene": {
         "renderer":{
-            "sky": "assets/textures/sky.jpg",
+            "sky": "assets/textures/galaxy.jpg",
             "postprocess": "assets/shaders/postprocess/vignette.frag"
         },
         "assets":{
