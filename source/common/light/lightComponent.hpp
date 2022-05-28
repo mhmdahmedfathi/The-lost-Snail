@@ -21,13 +21,12 @@ namespace our {
         glm::vec2 cone_angles; // x: inner_angle, y: outer_angle
         
         // constructor
-        void LightComponent(myType myDiffuse,mySpecular,myColor,myAttenuation,myAngles);
-        // compute Angles if spot light
-        void computeAngles();
+        void LightComponent(LightType myType ,glm::vec3 myDiffuse,glm::vec3 mySpecular,glm::vec4 myColor);
+        // set Angles if spot light
+        void setAngles();
         // compute attenuation if spot or point light
         void computeAttenuation();
 
-        // should be calculated from the entity component
         // void calculatePosition ();
         // void calculateDirection();
     };
