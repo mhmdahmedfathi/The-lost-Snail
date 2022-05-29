@@ -174,7 +174,7 @@
                 ],
                 "children": [
                     {
-                        "position": [1, -1, -1],
+                        "position": [0, -1, -1],
                         "scale": [2.0, 2.0, 1.0],
                         "components": [
                             {
@@ -183,8 +183,8 @@
                                 "material": "snail"
                             },
                             {
-                                "type": "Movement",
-                                "linearVelocity": [0, 0.1, 0]
+                                "type": "Movement"
+                              
                                  
                             }
                         ]
