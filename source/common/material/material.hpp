@@ -63,5 +63,12 @@ namespace our {
             return new Material();
         }
     }
+    // lighting material class
+    
+    class LitMaterial : public Material {
+    public:
+    void setup() const override;            
+    void deserialize(const nlohmann::json& data) override;
+    };
 
 }
