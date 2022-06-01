@@ -32,7 +32,8 @@
                 "glass": "assets/textures/glass-panels.png",
                 "monkey": "assets/textures/monkey.png",
                 "snail": "assets/textures/gray_snail.png",
-                "floor": "assets/textures/floor.png"
+                "floor": "assets/textures/floor.png",
+                "enemy":"assets/textures/tex_mrkrabs.png"
             },
             "meshes":{
                 "cube": "assets/models/cube.obj",
@@ -40,7 +41,8 @@
                 "plane": "assets/models/plane.obj",
                 "sphere": "assets/models/sphere.obj",
                 "snail": "assets/models/gray_snail.obj",
-                "floor": "assets/models/floor.obj"
+                "floor": "assets/models/floor.obj",
+                "enemy": "assets/models/mrkrabs.obj"
             },
             "samplers":{
                 "default":{},
@@ -129,6 +131,21 @@
                     "texture": "snail",
                     "sampler": "default"
                 },
+                "enemy":{
+                    "type": "textured",
+                    "shader": "textured",
+                    "pipelineState": {
+                        "faceCulling":{
+                            "enabled": false
+                        },
+                        "depthTesting":{
+                            "enabled": true
+                        }
+                    },
+                    "tint": [1, 1, 1, 1],
+                    "texture": "enemy",
+                    "sampler": "default"
+                },
                 "floor":{
                     "type": "textured",
                     "shader": "textured",
@@ -194,7 +211,7 @@
             {
                 "position": [0, -1, -1],
                 "rotation": [-90, 0, 0],
-                "scale": [2, 1000, 1],
+                "scale": [3, 600, 1],
                 "components": [
                     {
                         "type": "Mesh Renderer",
@@ -202,7 +219,112 @@
                         "material": "floor"
                     }
                 ]
-            }        
+            },
+            // enemies
+            {
+               // "rotation": [45, 45, 0],
+                "position": [-1, -1, -1],
+               // "position": [0,1 , -1],
+                "scale": [0.5, 0.5, 1],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "enemy",
+                        "material": "enemy"
+                    }
+                ]
+            },
+            {
+                // "rotation": [45, 45, 0],
+                 "position": [0, -1, -20],
+                // "position": [0,1 , -1],
+                 "scale": [0.5, 0.5, 1],
+                 "components": [
+                     {
+                         "type": "Mesh Renderer",
+                         "mesh": "enemy",
+                         "material": "enemy"
+                     }
+                 ]
+             } ,
+             {
+                // "rotation": [45, 45, 0],
+                 "position": [0.5, -1, -40],
+                // "position": [0,1 , -1],
+                 "scale": [0.5, 0.5, 1],
+                 "components": [
+                     {
+                         "type": "Mesh Renderer",
+                         "mesh": "enemy",
+                         "material": "enemy"
+                     }
+                 ]
+             } ,  
+             {
+                // "rotation": [45, 45, 0],
+                 "position": [1, -1, -60],
+                // "position": [0,1 , -1],
+                 "scale": [0.5, 0.5, 1],
+                 "components": [
+                     {
+                         "type": "Mesh Renderer",
+                         "mesh": "enemy",
+                         "material": "enemy"
+                     }
+                 ]
+             } ,
+             {
+                // "rotation": [45, 45, 0],
+                 "position": [-1, -1, -80],
+                // "position": [0,1 , -1],
+                 "scale": [0.5, 0.5, 1],
+                 "components": [
+                     {
+                         "type": "Mesh Renderer",
+                         "mesh": "enemy",
+                         "material": "enemy"
+                     }
+                 ]
+             } ,
+             {
+                // "rotation": [45, 45, 0],
+                 "position": [0, -1, -80],
+                // "position": [0,1 , -1],
+                 "scale": [0.5, 0.5, 1],
+                 "components": [
+                     {
+                         "type": "Mesh Renderer",
+                         "mesh": "enemy",
+                         "material": "enemy"
+                     }
+                 ]
+             } ,
+             {
+                // "rotation": [45, 45, 0],
+                 "position": [0.5, -1, -100],
+                // "position": [0,1 , -1],
+                 "scale": [0.5, 0.5, 1],
+                 "components": [
+                     {
+                         "type": "Mesh Renderer",
+                         "mesh": "enemy",
+                         "material": "enemy"
+                     }
+                 ]
+             } ,
+             {
+                // "rotation": [45, 45, 0],
+                 "position": [0.5, -1, -130],
+                // "position": [0,1 , -1],
+                 "scale": [0.5, 0.5, 1],
+                 "components": [
+                     {
+                         "type": "Mesh Renderer",
+                         "mesh": "enemy",
+                         "material": "enemy"
+                     }
+                 ]
+             } 
         ],
         "lightSources":[
              {
