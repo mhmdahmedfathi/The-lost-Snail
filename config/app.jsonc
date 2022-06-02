@@ -331,7 +331,9 @@
                  "type":"DIRECTIONAL",
                  "diffuse":[ 1, 0.9, 0.7],
                  "specular":[ 1, 0.9, 0.7],
-                 "color":[0,0,1,1]
+                 "color":[0,0,1,1],
+                 "position":[ 2, 0, 0],
+                 "direction":[ -1, 0, 0]
              },
              {
                 "type":"SPOT",
@@ -339,7 +341,9 @@
                 "specular":[ 1, 0.9, 0.7],
                 "color":[1,1,1,1],
                 "attenuation":[1,0,0],
-                "cone_angles":[ 10.0 , 11.0]
+                "cone_angles":[ 10.0 , 11.0],
+                "position":[ 1, 0, 0],
+                "direction":[ 2, 0, 0]
                 //glm::radians(10.0f), glm::radians(11.0f)
             },
             {
@@ -347,7 +351,9 @@
                 "diffuse":[ 1, 0.2, 0.1],
                 "specular":[ 1, 0.2, 0.1],
                 "color":[1,0,0,1],
-                "attenuation":[1, 0, 0]
+                "attenuation":[1, 0, 0],
+                "position":[ -2, 0, 0],
+                "direction":[ 3, 0, 0]
             }
 
         ]
