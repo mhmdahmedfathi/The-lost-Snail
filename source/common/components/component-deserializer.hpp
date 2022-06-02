@@ -5,7 +5,7 @@
 #include "mesh-renderer.hpp"
 #include "free-camera-controller.hpp"
 #include "movement.hpp"
-
+#include "Snail.hpp"
 namespace our {
 
     // Given a json object, this function picks and creates a component in the given entity
@@ -21,6 +21,8 @@ namespace our {
             component = entity->addComponent<FreeCameraControllerComponent>();
         } else if (type == MovementComponent::getID()) {
             component = entity->addComponent<MovementComponent>();
+        } else if(type == SnailComponent::getID()){
+            component = entity->addComponent<SnailComponent>();
         }
         if(component) component->deserialize(data);
     }

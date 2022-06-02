@@ -1,8 +1,9 @@
 #pragma once
 #include "../ecs/world.hpp"
 #include "../components/camera.hpp"
+#include "../components/Snail.hpp"
 #include "../components/free-camera-controller.hpp"
-
+#include "iostream"
 #include "../application.hpp"
 
 #include <glm/glm.hpp>
@@ -34,6 +35,7 @@ namespace our
             // First of all, we search for an entity containing both a CameraComponent and a FreeCameraControllerComponent
             // As soon as we find one, we break
             CameraComponent *camera = nullptr;
+            SnailComponent *Snail = nullptr;
             FreeCameraControllerComponent *controller = nullptr;
             for (auto entity : world->getEntities())
             {
@@ -42,12 +44,17 @@ namespace our
                 if (camera && controller)
                     break;
             }
+            for (auto entity : world->getEntities())
+            {
+                Snail = entity->getComponent<SnailComponent>();
+                if (Snail)
+                    break;
+            }
             // If there is no entity with both a CameraComponent and a FreeCameraControllerComponent, we can do nothing so we return
-            if (!(camera && controller))
+            if (!(Snail ))
                 return;
             // Get the entity that we found via getOwner of camera (we could use controller->getOwner())
-            Entity *entity = camera->getOwner();
-
+            Entity *entity = Snail->getOwner();
             // If the left mouse button is pressed, we lock and hide the mouse. This common in First Person Games.
             if (app->getMouse().isPressed(GLFW_MOUSE_BUTTON_1) && !mouse_locked)
             {
@@ -97,26 +104,26 @@ namespace our
 
             glm::vec3 current_sensitivity = controller->positionSensitivity;
             // If the LEFT SHIFT key is pressed, we multiply the position sensitivity by the speed up factor
-            // if(app->getKeyboard().isPressed(GLFW_KEY_LEFT_SHIFT)) current_sensitivity *= controller->speedupFactor;
-
+            //if(app->getKeyboard().isPressed(GLFW_KEY_LEFT_SHIFT)) current_sensitivity *= controller->speedupFactor;
+            //current_sensitivity *= controller->speedupFactor;
             // make it move forward all the time
             position += front * (deltaTime * current_sensitivity.z);
-            // We change the camera position based on the keys WASD/QE
-            if (position.x < 1.51753)
+            //We change the camera position based on the keys WASD/QE
+            if (position.x < 2.35222)
             {
 
                 // A & D moves the player left or right
                 if (app->getKeyboard().isPressed(GLFW_KEY_D))
-                    position += right * (deltaTime * current_sensitivity.x);
+                    position -= right * (deltaTime * current_sensitivity.x);
                 if (app->getKeyboard().isPressed(GLFW_KEY_RIGHT))
-                    position += right * (deltaTime * current_sensitivity.x);
+                    position -= right * (deltaTime * current_sensitivity.x);
             }
-            if (position.x > -1.51753)
+            if (position.x > -2.35222)
             {
                 if (app->getKeyboard().isPressed(GLFW_KEY_A))
-                    position -= right * (deltaTime * current_sensitivity.x);
+                    position += right * (deltaTime * current_sensitivity.x);
                 if (app->getKeyboard().isPressed(GLFW_KEY_LEFT))
-                    position -= right * (deltaTime * current_sensitivity.x);
+                    position += right * (deltaTime * current_sensitivity.x);
             }
         }
 
