@@ -33,7 +33,8 @@
                 "monkey": "assets/textures/monkey.png",
                 "snail": "assets/textures/gray_snail.png",
                 "floor": "assets/textures/floor.png",
-                "enemy":"assets/textures/tex_mrkrabs.png"
+                "enemy":"assets/textures/tex_mrkrabs.png",
+                "coin": "assets/textures/yellowCoin.png"
             },
             "meshes":{
                 "cube": "assets/models/cube.obj",
@@ -42,7 +43,8 @@
                 "sphere": "assets/models/sphere.obj",
                 "snail": "assets/models/gray_snail.obj",
                 "floor": "assets/models/floor.obj",
-                "enemy": "assets/models/mrkrabs.obj"
+                "enemy": "assets/models/mrkrabs.obj",
+                "coin": "assets/models/yellowCoin.obj"
             },
             "samplers":{
                 "default":{},
@@ -159,6 +161,21 @@
                     },
                     "tint": [1, 1, 1, 1],
                     "texture": "floor",
+                    "sampler": "default"
+                },
+                "coin":{
+                    "type": "textured",
+                    "shader": "textured",
+                    "pipelineState": {
+                        "faceCulling":{
+                            "enabled": false
+                        },
+                        "depthTesting":{
+                            "enabled": true
+                        }
+                    },
+                    "tint": [1, 1, 1, 1],
+                    "texture": "coin",
                     "sampler": "default"
                 },
                 "moon":{
@@ -310,7 +327,7 @@
              } ,
              {
                 // "rotation": [45, 45, 0],
-                 "position": [0, -1, -80],
+                 "position": [0, -1, -100],
                 // "position": [0,1 , -1],
                  "scale": [0.5, 0.5, 1],
                  "components": [
@@ -328,7 +345,7 @@
              } ,
              {
                 // "rotation": [45, 45, 0],
-                 "position": [0.5, -1, -100],
+                 "position": [-1, -1, -120],
                 // "position": [0,1 , -1],
                  "scale": [0.5, 0.5, 1],
                  "components": [
@@ -346,7 +363,7 @@
              } ,
              {
                 // "rotation": [45, 45, 0],
-                 "position": [0.5, -1, -130],
+                 "position": [0, -1, -140],
                 // "position": [0,1 , -1],
                  "scale": [0.5, 0.5, 1],
                  "components": [
@@ -361,8 +378,274 @@
                        "effect" : 25
                      }
                  ]
-             } 
+             }, 
+             //--------------------- coins
+             {
+                 "rotation": [0, 45, 0],
+                 "position": [0.3, -1, -10],
+                 "scale": [5, 5, 5],
+                 "components": [
+                     {
+                         "type": "Mesh Renderer",
+                         "mesh": "coin",
+                         "material": "coin"
+                     },
+                     {
+                       "type":"Collision",
+                       "obstucaseType" :"danger",
+                       "effect" : 25
+                     },
+                     {
+                        "type": "Movement",
+                        "angularVelocity": [0, 90, 0]
+            
+                     }
+                 ]
+             },
+             {
+                "rotation": [0, 45, 0],
+                "position": [0.5, -1, -15],
+                "scale": [5, 5, 5],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "coin",
+                        "material": "coin"
+                    },
+                    {
+                      "type":"Collision",
+                      "obstucaseType" :"danger",
+                      "effect" : 25
+                    },
+                    {
+                       "type": "Movement",
+                       "angularVelocity": [0, 90, 0]
+           
+                    }
+                ]
+            },
+            {
+                "rotation": [0, 45, 0],
+                "position": [-0.3, -1, -25],
+                "scale": [5, 5, 5],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "coin",
+                        "material": "coin"
+                    },
+                    {
+                      "type":"Collision",
+                      "obstucaseType" :"danger",
+                      "effect" : 25
+                    },
+                    {
+                       "type": "Movement",
+                       "angularVelocity": [0, 90, 0]
+           
+                    }
+                ]
+            } ,
+            {
+                "rotation": [0, 45, 0],
+                "position": [0.9, -1, -35],
+                "scale": [5, 5, 5],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "coin",
+                        "material": "coin"
+                    },
+                    {
+                      "type":"Collision",
+                      "obstucaseType" :"danger",
+                      "effect" : 25
+                    },
+                    {
+                       "type": "Movement",
+                       "angularVelocity": [0, 90, 0]
+           
+                    }
+                ]
+            } ,
+            {
+                "rotation": [0, 45, 0],
+                "position": [1, -1, -45],
+                "scale": [5, 5, 5],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "coin",
+                        "material": "coin"
+                    },
+                    {
+                      "type":"Collision",
+                      "obstucaseType" :"danger",
+                      "effect" : 25
+                    },
+                    {
+                       "type": "Movement",
+                       "angularVelocity": [0, 90, 0]
+           
+                    }
+                ]
+            } ,
+            {
+                "rotation": [0, 45, 0],
+                "position": [-1, -1, -55],
+                "scale": [5, 5, 5],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "coin",
+                        "material": "coin"
+                    },
+                    {
+                      "type":"Collision",
+                      "obstucaseType" :"danger",
+                      "effect" : 25
+                    },
+                    {
+                       "type": "Movement",
+                       "angularVelocity": [0, 90, 0]
+           
+                    }
+                ]
+            } ,
+            {
+                "rotation": [0, 45, 0],
+                "position": [1, -1, -70],
+                "scale": [5, 5, 5],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "coin",
+                        "material": "coin"
+                    },
+                    {
+                      "type":"Collision",
+                      "obstucaseType" :"danger",
+                      "effect" : 25
+                    },
+                    {
+                       "type": "Movement",
+                       "angularVelocity": [0, 90, 0]
+           
+                    }
+                ]
+            },
+            {
+                "rotation": [0, 45, 0],
+                "position": [-0.3, -1, -85],
+                "scale": [5, 5, 5],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "coin",
+                        "material": "coin"
+                    },
+                    {
+                      "type":"Collision",
+                      "obstucaseType" :"danger",
+                      "effect" : 25
+                    },
+                    {
+                       "type": "Movement",
+                       "angularVelocity": [0, 90, 0]
+           
+                    }
+                ]
+            } ,
+            {
+                "rotation": [0, 45, 0],
+                "position": [0.7, -1, -90],
+                "scale": [5, 5, 5],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "coin",
+                        "material": "coin"
+                    },
+                    {
+                      "type":"Collision",
+                      "obstucaseType" :"danger",
+                      "effect" : 25
+                    },
+                    {
+                       "type": "Movement",
+                       "angularVelocity": [0, 90, 0]
+           
+                    }
+                ]
+            }  ,
+            {
+                "rotation": [0, 45, 0],
+                "position": [0.7, -1, -105],
+                "scale": [5, 5, 5],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "coin",
+                        "material": "coin"
+                    },
+                    {
+                      "type":"Collision",
+                      "obstucaseType" :"danger",
+                      "effect" : 25
+                    },
+                    {
+                       "type": "Movement",
+                       "angularVelocity": [0, 90, 0]
+           
+                    }
+                ]
+            } ,
+            {
+                "rotation": [0, 45, 0],
+                "position": [-1, -1, -115],
+                "scale": [5, 5, 5],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "coin",
+                        "material": "coin"
+                    },
+                    {
+                      "type":"Collision",
+                      "obstucaseType" :"danger",
+                      "effect" : 25
+                    },
+                    {
+                       "type": "Movement",
+                       "angularVelocity": [0, 90, 0]
+           
+                    }
+                ]
+            } ,
+            {
+                "rotation": [0, 45, 0],
+                "position": [0, -1, -125],
+                "scale": [5, 5, 5],
+                "components": [
+                    {
+                        "type": "Mesh Renderer",
+                        "mesh": "coin",
+                        "material": "coin"
+                    },
+                    {
+                      "type":"Collision",
+                      "obstucaseType" :"danger",
+                      "effect" : 25
+                    },
+                    {
+                       "type": "Movement",
+                       "angularVelocity": [0, 90, 0]
+           
+                    }
+                ]
+            } 
         ],
+        //---------------- lightSources
         "lightSources":[
              {
                  "type":"DIRECTIONAL",
