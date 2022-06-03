@@ -1,0 +1,51 @@
+{
+  "start-scene": "main_menu",
+  "window": {
+    "title": "The lost snail",
+    "size": {
+      "width": 1280,
+      "height": 720
+    },
+    "fullscreen": false
+  },
+  "scene": {
+    "renderer": {
+      "sky": "assets/textures/galaxy.jpg",
+      "postprocess": "assets/shaders/postprocess/vignette.frag"
+    },
+    "assets": {
+      "shaders": {
+      },
+      "textures": {},
+      "meshes": {},
+      "samplers": {
+        "default": {},
+        "pixelated": {
+          "MAG_FILTER": "GL_NEAREST"
+        }
+      },
+      "materials": {}
+    },
+    "world": [
+      {
+        "position": [0, 0, 10],
+        "components": [
+          {
+            "type": "Camera"
+          },
+          {
+            "type": "Free Camera Controller"
+          }
+        ],
+        "children": [
+          {
+            "rotation": [45, 0, 0],
+            "position": [0, -1, -1],
+            "scale": [0, 0, 1.0],
+            "components": []
+          }
+        ]
+      }
+    ]
+  }
+}

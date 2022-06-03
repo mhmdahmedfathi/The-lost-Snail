@@ -1,8 +1,8 @@
 {
-    "start-scene": "main",
+    "start-scene": "game_mode",
     "window":
     {
-        "title":"Default Game Window",
+        "title":"The lost snail",
         "size":{
             "width":1280,
             "height":720
