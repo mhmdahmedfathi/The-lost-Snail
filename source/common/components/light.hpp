@@ -1,7 +1,7 @@
 #pragma once
 
-#include "component.hpp"
-#include "transform.hpp"
+#include "../ecs/component.hpp"
+#include "../ecs/transform.hpp"
 #include <unordered_map>
 #include <string>
 #include <type_traits>
@@ -26,10 +26,11 @@ namespace our {
         glm::vec3 initDirection;
         glm::vec3 position;
         glm::vec3 direction;
-        
+        std::string lightTypeStr;
         // Reads light parameters from the given json object
         void deserialize(const nlohmann::json& data) override;
-    
+        static std::string getID() { return "lighted"; }
+
         void calculatePosition (  glm::mat4 localToWorld );
         void calculateDirection(  glm::mat4 localToWorld);
     };

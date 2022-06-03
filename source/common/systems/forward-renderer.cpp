@@ -1,6 +1,7 @@
 #include "forward-renderer.hpp"
 #include "../mesh/mesh-utils.hpp"
 #include "../texture/texture-utils.hpp"
+#include "iostream"
 
 namespace our
 {
@@ -103,23 +104,24 @@ namespace our
             postprocessMaterial->pipelineState.depthMask = false;
         }
         // lighting
-         if (config.contains("lightSources"))
-         {
-            for(const auto& lightData : config.array())
-            {
-            LightComponent* light = new LightComponent();
-            lightSources.insert(light);
-            light->deserialize(lightData);
-            }
-            // Create the light shader
-            ShaderProgram *lightShader = new ShaderProgram();
-            lightShader->attach("assets/shaders/lighted.vert", GL_VERTEX_SHADER);
-            lightShader->attach(config.value<std::string>("lighted", ""), GL_FRAGMENT_SHADER);
-            lightShader->link();
-             // Create the light material
-            lightMaterial = new LitMaterial();
-            lightMaterial->shader = lightShader;
-         }
+        //  if (config.contains("lightSources"))
+        //  {
+        //     std::cout<<"entered"<<std::endl;
+        //     for(const auto& lightData : config.array())
+        //     {
+        //     LightComponent* light = new LightComponent();
+        //     lightSources.insert(light);
+        //     light->deserialize(lightData);
+        //     }
+        //     // Create the light shader
+        //     ShaderProgram *lightShader = new ShaderProgram();
+        //     lightShader->attach("assets/shaders/lighted.vert", GL_VERTEX_SHADER);
+        //     lightShader->attach(config.value<std::string>("lighted", ""), GL_FRAGMENT_SHADER);
+        //     lightShader->link();
+        //      // Create the light material
+        //     lightMaterial = new LitMaterial();
+        //     lightMaterial->shader = lightShader;
+        //  }
     }
 
     void ForwardRenderer::destroy()
