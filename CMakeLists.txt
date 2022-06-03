@@ -60,7 +60,7 @@ set(COMMON_SOURCES
         source/common/material/pipeline-state.cpp
         source/common/material/material.hpp
         source/common/material/material.cpp
-
+        
         source/common/ecs/component.hpp
         source/common/ecs/transform.hpp
         source/common/ecs/transform.cpp
@@ -77,6 +77,10 @@ set(COMMON_SOURCES
         source/common/components/free-camera-controller.cpp
         source/common/components/movement.hpp
         source/common/components/movement.cpp
+        source/common/components/collision.hpp
+        source/common/components/collision.cpp
+        source/common/components/Snail.hpp
+        source/common/components/Snail.cpp
         source/common/components/component-deserializer.hpp
 
         source/common/systems/forward-renderer.hpp
