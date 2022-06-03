@@ -27,6 +27,8 @@ namespace our
         diffuse = data.value("diffuse");
         specular = data.value("specular");
         color = data.value("color", color);
+        initPosition = data.value("position", color);
+        initDirection = data.value("direction", color);
         
         if ( lightType != LightType::DIRECTIONAL)
         {
@@ -38,5 +40,13 @@ namespace our
          glm::vec2 angles = data.value("cone_angles");
          cone_angles=glm::radians(angles[0]f), glm::radians(angles[1]f)
         }
+    }
+    void LightComponent:: calculatePosition ( glm::mat4 localToWorld )
+    {
+      position = initPosition *localToWorld;
+    }
+    void  LightComponent:: calculateDirection( glm::mat4 localToWorld )
+    {
+    direction = initDirection * localToWorld;
     }
 }
