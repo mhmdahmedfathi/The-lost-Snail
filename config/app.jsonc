@@ -246,6 +246,11 @@
                          "type": "Mesh Renderer",
                          "mesh": "enemy",
                          "material": "enemy"
+                     },
+                     {
+                       "type":"Collision",
+                       "obstucaseType" :"danger",
+                       "effect" : 25
                      }
                  ]
              } ,
@@ -259,6 +264,11 @@
                          "type": "Mesh Renderer",
                          "mesh": "enemy",
                          "material": "enemy"
+                     },
+                     {
+                       "type":"Collision",
+                       "obstucaseType" :"danger",
+                       "effect" : 25
                      }
                  ]
              } ,  
@@ -272,6 +282,11 @@
                          "type": "Mesh Renderer",
                          "mesh": "enemy",
                          "material": "enemy"
+                     },
+                     {
+                       "type":"Collision",
+                       "obstucaseType" :"danger",
+                       "effect" : 25
                      }
                  ]
              } ,
@@ -285,6 +300,11 @@
                          "type": "Mesh Renderer",
                          "mesh": "enemy",
                          "material": "enemy"
+                     },
+                     {
+                       "type":"Collision",
+                       "obstucaseType" :"danger",
+                       "effect" : 25
                      }
                  ]
              } ,
@@ -298,6 +318,11 @@
                          "type": "Mesh Renderer",
                          "mesh": "enemy",
                          "material": "enemy"
+                     },
+                     {
+                       "type":"Collision",
+                       "obstucaseType" :"danger",
+                       "effect" : 25
                      }
                  ]
              } ,
@@ -311,6 +336,11 @@
                          "type": "Mesh Renderer",
                          "mesh": "enemy",
                          "material": "enemy"
+                     },
+                     {
+                       "type":"Collision",
+                       "obstucaseType" :"danger",
+                       "effect" : 25
                      }
                  ]
              } ,
@@ -324,6 +354,11 @@
                          "type": "Mesh Renderer",
                          "mesh": "enemy",
                          "material": "enemy"
+                     },
+                     {
+                       "type":"Collision",
+                       "obstucaseType" :"danger",
+                       "effect" : 25
                      }
                  ]
              } 

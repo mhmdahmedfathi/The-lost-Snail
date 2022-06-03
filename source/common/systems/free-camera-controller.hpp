@@ -6,6 +6,8 @@
 #include "iostream"
 #include "../application.hpp"
 
+#include "../components/Collision.hpp"
+
 #include <glm/glm.hpp>
 #include <glm/gtc/constants.hpp>
 #include <glm/trigonometric.hpp>
@@ -50,6 +52,7 @@ namespace our
                 if (Snail)
                     break;
             }
+            
             // If there is no entity with both a CameraComponent and a FreeCameraControllerComponent, we can do nothing so we return
             if (!(Snail ))
                 return;
@@ -72,6 +75,33 @@ namespace our
             glm::vec3 &position = entity->localTransform.position;
             glm::vec3 &rotation = entity->localTransform.rotation;
 
+            Entity *Collision_entity = nullptr;
+            CollisionComponent *Collision = nullptr;
+
+            for (auto entity : world->getEntities())
+            {
+                Collision = entity->getComponent<CollisionComponent>();
+                if (!(Collision ))
+                continue;
+                Collision_entity = Collision->getOwner();
+
+                glm::vec3 &objPosition = Collision_entity->localTransform.position;
+
+                bool collisionX = position.x + 2.0 >= objPosition.x &&
+                                    objPosition.x + 2.0 >= position.x;
+                // collision y-axis?
+                bool collisionY = position.z + 3.0 >= objPosition.z &&
+                                    objPosition.z + 3.0 >= position.z;
+                // collision only if on both axes
+                    if (collisionX && collisionY) {
+                        std::cout<<" X "<< position.x <<" => "<< objPosition.x  <<std::endl;
+                        std::cout<<" Z "<< position.z <<" => "<< objPosition.z  <<std::endl;
+
+                        break;
+                    }
+            }
+
+            
             // If the left mouse button is pressed, we get the change in the mouse location
             // and use it to update the camera rotation
             if (app->getMouse().isPressed(GLFW_MOUSE_BUTTON_1))
