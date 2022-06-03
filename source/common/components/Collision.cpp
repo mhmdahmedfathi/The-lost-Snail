@@ -7,5 +7,6 @@ namespace our {
     void CollisionComponent::deserialize(const nlohmann::json& data){
         if(!data.is_object()) return;
         effect = data.value("effect", effect);
+        obstucaseType = data.value("obstucaseType", obstucaseType);
     }
 }
