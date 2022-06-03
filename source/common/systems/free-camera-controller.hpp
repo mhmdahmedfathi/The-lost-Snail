@@ -87,16 +87,24 @@ namespace our
 
                 glm::vec3 &objPosition = Collision_entity->localTransform.position;
 
-                bool collisionX = position.x + 2.0 >= objPosition.x &&
-                                    objPosition.x + 2.0 >= position.x;
-                // collision y-axis?
-                bool collisionY = position.z + 3.0 >= objPosition.z &&
-                                    objPosition.z + 3.0 >= position.z;
+                bool collisionX = false;
+                
+                if( Collision->getobstucaseType() == "danger"){
+                collisionX = position.x + 1.5 >= objPosition.x &&
+                                    objPosition.x + 1.5 >= position.x;
+                }else{
+                collisionX = position.x + 1 >= objPosition.x &&
+                                    objPosition.x + 1 >= position.x;    
+                }
+                // collision z-axis?
+                bool collisionY = position.z + 1.0 >= objPosition.z &&
+                                    objPosition.z + 1.0 >= position.z;
                 // collision only if on both axes
                     if (collisionX && collisionY) {
                         std::cout<<" X "<< position.x <<" => "<< objPosition.x  <<std::endl;
                         std::cout<<" Z "<< position.z <<" => "<< objPosition.z  <<std::endl;
-
+                        std::cout<<" type " << Collision->getobstucaseType()  <<std::endl;
+                        objPosition.z=0;
                         break;
                     }
             }

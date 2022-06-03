@@ -392,7 +392,7 @@
                      },
                      {
                        "type":"Collision",
-                       "obstucaseType" :"danger",
+                       "obstucaseType" :"increase",
                        "effect" : 25
                      },
                      {
@@ -414,7 +414,7 @@
                     },
                     {
                       "type":"Collision",
-                      "obstucaseType" :"danger",
+                      "obstucaseType" :"increase",
                       "effect" : 25
                     },
                     {
@@ -436,7 +436,7 @@
                     },
                     {
                       "type":"Collision",
-                      "obstucaseType" :"danger",
+                      "obstucaseType" :"increase",
                       "effect" : 25
                     },
                     {
@@ -458,7 +458,7 @@
                     },
                     {
                       "type":"Collision",
-                      "obstucaseType" :"danger",
+                      "obstucaseType" :"increase",
                       "effect" : 25
                     },
                     {
@@ -480,7 +480,7 @@
                     },
                     {
                       "type":"Collision",
-                      "obstucaseType" :"danger",
+                      "obstucaseType" :"increase",
                       "effect" : 25
                     },
                     {
@@ -502,7 +502,7 @@
                     },
                     {
                       "type":"Collision",
-                      "obstucaseType" :"danger",
+                      "obstucaseType" :"increase",
                       "effect" : 25
                     },
                     {
@@ -524,7 +524,7 @@
                     },
                     {
                       "type":"Collision",
-                      "obstucaseType" :"danger",
+                      "obstucaseType" :"increase",
                       "effect" : 25
                     },
                     {
@@ -546,7 +546,7 @@
                     },
                     {
                       "type":"Collision",
-                      "obstucaseType" :"danger",
+                      "obstucaseType" :"increase",
                       "effect" : 25
                     },
                     {
@@ -568,7 +568,7 @@
                     },
                     {
                       "type":"Collision",
-                      "obstucaseType" :"danger",
+                      "obstucaseType" :"increase",
                       "effect" : 25
                     },
                     {
@@ -590,7 +590,7 @@
                     },
                     {
                       "type":"Collision",
-                      "obstucaseType" :"danger",
+                      "obstucaseType" :"increase",
                       "effect" : 25
                     },
                     {
@@ -612,7 +612,7 @@
                     },
                     {
                       "type":"Collision",
-                      "obstucaseType" :"danger",
+                      "obstucaseType" :"increase",
                       "effect" : 25
                     },
                     {
@@ -634,7 +634,7 @@
                     },
                     {
                       "type":"Collision",
-                      "obstucaseType" :"danger",
+                      "obstucaseType" :"increase",
                       "effect" : 25
                     },
                     {

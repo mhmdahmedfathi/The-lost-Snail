@@ -14,8 +14,10 @@ namespace our {
     class CollisionComponent : public Component {
     public:
         int effect = 50;
+        std::string obstucaseType = "";
         // The ID of this component type is "Movement"
         static std::string getID() { return "Collision"; }
+        std::string getobstucaseType() { return this->obstucaseType; }
 
         // Reads linearVelocity & angularVelocity from the given json object
         void deserialize(const nlohmann::json& data) override;
