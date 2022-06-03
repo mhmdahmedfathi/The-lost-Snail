@@ -102,6 +102,24 @@ namespace our
             // so it is more performant to disable the depth mask
             postprocessMaterial->pipelineState.depthMask = false;
         }
+        // lighting
+         if (config.contains("lightSources"))
+         {
+            for(const auto& lightData : config.array())
+            {
+            LightComponent* light = new LightComponent();
+            lightSources.insert(light);
+            light->deserialize(lightData);
+            }
+            // Create the light shader
+            ShaderProgram *lightShader = new ShaderProgram();
+            lightShader->attach("assets/shaders/lighted.vert", GL_VERTEX_SHADER);
+            lightShader->attach(config.value<std::string>("lighted", ""), GL_FRAGMENT_SHADER);
+            lightShader->link();
+             // Create the light material
+            lightMaterial = new LitMaterial();
+            lightMaterial->shader = lightShader;
+         }
     }
 
     void ForwardRenderer::destroy()
@@ -263,6 +281,12 @@ namespace our
             glBindVertexArray(this->postProcessVertexArray);
             glDrawArrays(GL_TRIANGLES, 0, 3);      
 
+        }
+        // if  there is a light material apply it
+        if (lightMaterial)
+        {
+            lightMaterial->setup();
+            //lightMaterial->shader->set()
         }
     }
 
