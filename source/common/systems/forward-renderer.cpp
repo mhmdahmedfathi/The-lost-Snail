@@ -241,25 +241,25 @@ namespace our
             ShaderProgram* lightShader=command.material->shader;
             lightMaterial->shader=lightShader;
             int i=0;
-            lightMaterial->shader->set("light_count",lightSources.size());
+            lightMaterial->shader->set("light_count",(int)lightSources.size());
             for (auto lightSource : lightSources)
             {
                 
-              lightSource->calculatePosition(command.localToWorld);
+             lightSource->calculatePosition(command.localToWorld);
               lightSource->calculateDirection(command.localToWorld);
               //- set light data
               lightMaterial->shader->set("lights["+std::to_string(i)+"].type",lightSource->lightType);
-              lightMaterial->shader->set("lights["+std::to_string(i)+"].position",lightSource->position);
-              lightMaterial->shader->set("lights["+std::to_string(i)+"].direction",lightSource->direction);
+              lightMaterial->shader->set("lights["+std::to_string(i)+"].position",glm::vec3(1,0,0));
+              lightMaterial->shader->set("lights["+std::to_string(i)+"].direction",glm::vec3(0,0,-1));
               lightMaterial->shader->set("lights["+std::to_string(i)+"].diffuse",lightSource->diffuse);
               lightMaterial->shader->set("lights["+std::to_string(i)+"].specular",lightSource->specular);
               lightMaterial->shader->set("lights["+std::to_string(i)+"].attenuation",lightSource->attenuation);
               lightMaterial->shader->set("lights["+std::to_string(i)+"].cone_angles",lightSource->cone_angles);
               // sky:
             //   glm::vec3 skyTop=[1,0,0]
-              lightMaterial->shader->set("sky.top",this->skySphere);
-              lightMaterial->shader->set("sky.middle",(-1,0,0));
-              lightMaterial->shader->set("sky.below",(0,0,1));
+              lightMaterial->shader->set("sky.top",glm::vec3(-1,0,0));
+              lightMaterial->shader->set("sky.middle",glm::vec3(-1,0,0));
+              lightMaterial->shader->set("sky.below",glm::vec3(0,0,1));
               //---
               lightMaterial->shader->set("VP",VP);
               lightMaterial->shader->set("M",command.localToWorld);
