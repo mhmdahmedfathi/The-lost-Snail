@@ -11,6 +11,7 @@
 #include <filesystem>
 #include <flags/flags.h>
 #include <time.h>
+#include "../states/play-state.hpp"
 
 // Include the Dear ImGui implementation headers
 #define IMGUI_IMPL_OPENGL_LOADER_GLAD2
@@ -354,7 +355,6 @@ int our::Application::run(int run_for_frames)
             colors[ImGuiCol_ResizeGripActive] = ImVec4(0.0f, 0.0f, 0.0f, 0.0f);
             colors[ImGuiCol_ResizeGripHovered] = ImVec4(0.0f, 0.0f, 0.0f, 0.0f);
 
-
             // ImGui::ProgressBar(score, ImVec2(280, 40));
             std::string l1 = "Score: ";
             std::string l2 = std::to_string(int(score));
@@ -394,6 +394,8 @@ int our::Application::run(int run_for_frames)
             if (ImGui::Button("Restart the game", ImVec2(380, 120)))
             {
                 time(&start_time);
+                loser = false;
+                registerState<Playstate>("game_mode");
                 changeState("game_mode");
             }
 
