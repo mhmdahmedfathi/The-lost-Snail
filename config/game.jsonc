@@ -12,7 +12,11 @@
     "scene": {
         "renderer":{
             "sky": "assets/textures/galaxy.jpg",
-            "postprocess": "assets/shaders/postprocess/vignette.frag"
+            "postprocess": "assets/shaders/postprocess/vignette.frag",
+                "skyTop":[ 0.3, 0.6, 1.0],
+                "skyMiddle":[ 0.3, 0.3, 0.3],
+                "skyBottom":[0.1, 0.1, 0.0]
+
         },
         "assets":{
             "shaders":{
@@ -78,7 +82,6 @@
                     "specular":"specular",
                     "albedo":"albedo",
                     "roughness":"roughness"
-
                 },
                 "enemy":{
                     "type": "textured",
@@ -198,6 +201,12 @@
                         "mesh": "enemy",
                         "material": "enemy"
                     }
+                    ,
+                     {
+                       "type":"Collision",
+                       "obstucaseType" :"danger",
+                       "effect" : 25
+                     }
                 ]
             },
             {
@@ -337,6 +346,12 @@
                         "mesh": "enemy",
                         "material": "enemy"
                     }
+                    ,
+                     {
+                       "type":"Collision",
+                       "obstucaseType" :"danger",
+                       "effect" : 25
+                     }
                 ]
             },
             {
@@ -474,6 +489,12 @@
                          "type": "Mesh Renderer",
                          "mesh": "enemy",
                          "material": "enemy"
+                     }
+                     ,
+                     {
+                       "type":"Collision",
+                       "obstucaseType" :"danger",
+                       "effect" : 25
                      }
                  ]
              },
