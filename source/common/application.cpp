@@ -9,10 +9,8 @@
 #include <queue>
 #include <tuple>
 #include <filesystem>
-
 #include <flags/flags.h>
 #include <time.h>
-#include <unistd.h>
 
 // Include the Dear ImGui implementation headers
 #define IMGUI_IMPL_OPENGL_LOADER_GLAD2
