@@ -16,7 +16,7 @@ namespace our {
     };
     class LightComponent : public Component {
     public:
-        LightType lightType; // The type of the light
+        int lightType; // The type of the light
         glm::vec3 diffuse;
         glm::vec3 specular;
         glm::vec4 color;

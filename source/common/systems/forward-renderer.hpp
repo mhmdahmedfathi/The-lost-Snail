@@ -43,7 +43,7 @@ namespace our
         Texture2D *colorTarget, *depthTarget;
         TexturedMaterial* postprocessMaterial;
         // Objects used to support lighting
-        std::unordered_set<LightComponent*> lightSources;
+        std::vector<LightComponent*> lightSources;
         LitMaterial* lightMaterial;
 
         

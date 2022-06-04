@@ -12,16 +12,18 @@ namespace our
         if (!data.is_object())
             return;
 
-        lightTypeStr = data.value("type", "DIRECTIONAL");
+        lightTypeStr = data.value("typeOfLight", "DIRECTIONAL");
 
         if (lightTypeStr == "DIRECTIONAL")
-            lightType = LightType::DIRECTIONAL;
-
-        else if (lightTypeStr == "SPOT")
-            lightType = LightType::SPOT;
+            lightType = 0;
 
         else if (lightTypeStr == "POINT")
-            lightType = LightType::POINT;
+            lightType = 1;
+
+        else if (lightTypeStr == "SPOT")
+            lightType =2;
+
+       
 
         // I didn't assign default values (second parameter of data.value)
         diffuse = data.value("diffuse",diffuse);
@@ -30,15 +32,16 @@ namespace our
         initPosition = data.value("position", initPosition);
         initDirection = data.value("direction", initDirection);
 
-        if (lightType != LightType::DIRECTIONAL)
+        if (lightType != 0)
         {
             attenuation = data.value("attenuation",attenuation);
         }
 
-        if (lightType == LightType::SPOT)
+        if (lightType ==2)
         {
-            glm::vec2 angles = data.value("cone_angles",angles);
-            //cone_angles = glm::radians(angles[0]), glm::radians(angles[1]);
+          //  glm::vec2 angles =
+          cone_angles =  data.value("cone_angles",cone_angles);
+          //glm::radians(angles[0]), glm::radians(angles[1]);
         }
     }
     void LightComponent::calculatePosition(glm::mat4 localToWorld)

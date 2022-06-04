@@ -178,7 +178,13 @@ namespace our
                     // Otherwise, we add it to the opaque command list
                     opaqueCommands.push_back(command);
                 }
+
             }
+            // if light component
+             if (auto lightComp = entity->getComponent<LightComponent>(); lightComp)
+             {
+                 lightSources.push_back(lightComp);
+             }
         }
 
         // If there is no camera, we return (we cannot render without a camera)
@@ -232,6 +238,27 @@ namespace our
             MVP_O = VP * command.localToWorld;
             command.material->shader->set("transform", MVP_O);
             command.mesh->draw();
+            int i=0;
+            for (auto lightSource : lightSources)
+            {
+              
+              lightSource->calculatePosition(command.localToWorld);
+              lightSource->calculateDirection(command.localToWorld);
+
+              lightMaterial->shader->set("lights["+std::to_string(i)+"].type",lightSource->lightType);
+              lightMaterial->shader->set("lights["+std::to_string(i)+"].position",lightSource->position);
+              lightMaterial->shader->set("lights["+std::to_string(i)+"].direction",lightSource->direction);
+              lightMaterial->shader->set("lights["+std::to_string(i)+"].diffuse",lightSource->diffuse);
+              lightMaterial->shader->set("lights["+std::to_string(i)+"].specular",lightSource->specular);
+              lightMaterial->shader->set("lights["+std::to_string(i)+"].attenuation",lightSource->attenuation);
+              lightMaterial->shader->set("lights["+std::to_string(i)+"].cone_angles",lightSource->cone_angles);
+             
+              lightMaterial->shader->set("VP",VP);
+              lightMaterial->shader->set("M",command.localToWorld);
+              lightMaterial->shader->set("eye",eye);
+              lightMaterial->shader->set("M_IT",glm::inverse(command.localToWorld));
+             i++;
+            }
         }
 
         // If there is a sky material, draw the sky
