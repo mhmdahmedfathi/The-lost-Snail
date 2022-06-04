@@ -108,7 +108,7 @@ namespace our
                     std::cout << " X " << position.x << " => " << objPosition.x << std::endl;
                     std::cout << " Z " << position.z << " => " << objPosition.z << std::endl;
                     std::cout << " type " << Collision->getobstucaseType() << std::endl;
-                    objPosition.y = 100;
+                    world->markForRemoval(Collision_entity);
                     if (Collision->getobstucaseType() != "danger")
                         app->score += 10;
                     break;
