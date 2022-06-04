@@ -2,7 +2,7 @@
 #include "../mesh/mesh-utils.hpp"
 #include "../texture/texture-utils.hpp"
 #include "iostream"
-
+#include <glm/gtx/euler_angles.hpp>
 namespace our
 {
     void ForwardRenderer::initialize(glm::ivec2 windowSize, const nlohmann::json &config)
@@ -252,20 +252,22 @@ namespace our
             {
            LightComponent *lightSource = lightEntities[i]->getComponent<LightComponent>();
               //- set light data in the shader
+               glm::vec3 rotation = lightEntities[i]->localTransform.rotation;
+            
+           lightShader->set("lights["+std::to_string(i)+"].direction", (glm::vec3)((glm::yawPitchRoll(rotation[1], rotation[0], rotation[2]) * (glm::vec4(0, -1, 0, 0)))));
               lightShader->set("lights["+std::to_string(i)+"].type",lightSource->lightType);
               lightShader->set("lights["+std::to_string(i)+"].position", lightEntities[i]->localTransform.position);
-              lightShader->set("lights["+std::to_string(i)+"].direction", lightEntities[i]->localTransform.rotation);
-             lightShader->set("lights["+std::to_string(i)+"].diffuse",lightSource->diffuse);
+           //   lightShader->set("lights["+std::to_string(i)+"].direction", lightEntities[i]->localTransform.rotation);
+              lightShader->set("lights["+std::to_string(i)+"].diffuse",lightSource->diffuse);
               lightShader->set("lights["+std::to_string(i)+"].specular",lightSource->specular);
               lightShader->set("lights["+std::to_string(i)+"].attenuation",lightSource->attenuation);
               lightShader->set("lights["+std::to_string(i)+"].cone_angles",glm::vec2(lightSource->cone_angles.x,lightSource->cone_angles.y));
                i++;
             }
               // sky:
-            //   glm::vec3 skyTop=[1,0,0]
-             lightShader->set("sky.top",glm::vec3(-1,0,0));
-             lightShader->set("sky.middle",glm::vec3(-1,0,0));
-              lightShader->set("sky.below",glm::vec3(0,0,1));
+            lightShader->set("sky.top",skyTop);
+            lightShader->set("sky.middle",skyMiddle);
+            lightShader->set("sky.below",skyBottom);
              
             command.mesh->draw();
         }
