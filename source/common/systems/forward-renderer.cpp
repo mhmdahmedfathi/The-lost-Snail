@@ -1,6 +1,7 @@
 #include "forward-renderer.hpp"
 #include "../mesh/mesh-utils.hpp"
 #include "../texture/texture-utils.hpp"
+#include "iostream"
 
 namespace our
 {
@@ -103,23 +104,24 @@ namespace our
             postprocessMaterial->pipelineState.depthMask = false;
         }
         // lighting
-         if (config.contains("lightSources"))
-         {
-            for(const auto& lightData : config.array())
-            {
-            LightComponent* light = new LightComponent();
-            lightSources.insert(light);
-            light->deserialize(lightData);
-            }
-            // Create the light shader
-            ShaderProgram *lightShader = new ShaderProgram();
-            lightShader->attach("assets/shaders/lighted.vert", GL_VERTEX_SHADER);
-            lightShader->attach(config.value<std::string>("lighted", ""), GL_FRAGMENT_SHADER);
-            lightShader->link();
-             // Create the light material
-            lightMaterial = new LitMaterial();
-            lightMaterial->shader = lightShader;
-         }
+        //  if (config.contains("lightSources"))
+        //  {
+        //     std::cout<<"entered"<<std::endl;
+        //     for(const auto& lightData : config.array())
+        //     {
+        //     LightComponent* light = new LightComponent();
+        //     lightSources.insert(light);
+        //     light->deserialize(lightData);
+        //     }
+        //     // Create the light shader
+        //     ShaderProgram *lightShader = new ShaderProgram();
+        //     lightShader->attach("assets/shaders/lighted.vert", GL_VERTEX_SHADER);
+        //     lightShader->attach(config.value<std::string>("lighted", ""), GL_FRAGMENT_SHADER);
+        //     lightShader->link();
+        //      // Create the light material
+        //     lightMaterial = new LitMaterial();
+        //     lightMaterial->shader = lightShader;
+        //  }
     }
 
     void ForwardRenderer::destroy()
@@ -176,7 +178,13 @@ namespace our
                     // Otherwise, we add it to the opaque command list
                     opaqueCommands.push_back(command);
                 }
+
             }
+            // if light component
+             if (auto lightComp = entity->getComponent<LightComponent>(); lightComp)
+             {
+                 lightEntities.push_back(entity);
+             }
         }
 
         // If there is no camera, we return (we cannot render without a camera)
@@ -192,13 +200,14 @@ namespace our
         glm::vec3 center = M * glm::vec4(0, 0, -1, 1);
         glm::vec3 cameraForward = glm::normalize(center - eye);
         std::sort(transparentCommands.begin(), transparentCommands.end(), [cameraForward](const RenderCommand &first, const RenderCommand &second)
-                  {
+        {
             //TODO: (Req 8) Finish this function
             // HINT: the following return should return true "first" should be drawn before "second". 
             if (glm::dot(cameraForward,first.center) > glm::dot(cameraForward,second.center)  )
             return true;
             else
-            return false; });
+            return false; 
+        });
 
         // TODO: (Req 8) Get the camera ViewProjection matrix and store it in VP
         glm::mat4 VP = camera->getProjectionMatrix(windowSize) * camera->getViewMatrix();
@@ -226,9 +235,38 @@ namespace our
         glm::mat4 MVP_O;
         for (auto command : opaqueCommands)
         {
+            ShaderProgram* lightShader=command.material->shader;
+            //??not sure
+            if (!lightShader) continue;
             command.material->setup();
             MVP_O = VP * command.localToWorld;
             command.material->shader->set("transform", MVP_O);
+            int i=0;
+             //---
+            lightShader->set("VP",VP);
+            lightShader->set("M",command.localToWorld);
+            lightShader->set("eye",eye);
+            lightShader->set("M_IT", glm::transpose(glm::inverse(command.localToWorld)));
+            lightShader->set("light_count",(int)lightSources.size());
+            for (auto lightSource : lightSources)
+            {
+           LightComponent *lightSource = lightEntities[i]->getComponent<LightComponent>();
+              //- set light data in the shader
+              lightShader->set("lights["+std::to_string(i)+"].type",lightSource->lightType);
+              lightShader->set("lights["+std::to_string(i)+"].position", lightEntities[i]->localTransform.position);
+              lightShader->set("lights["+std::to_string(i)+"].direction", lightEntities[i]->localTransform.rotation);
+             lightShader->set("lights["+std::to_string(i)+"].diffuse",lightSource->diffuse);
+              lightShader->set("lights["+std::to_string(i)+"].specular",lightSource->specular);
+              lightShader->set("lights["+std::to_string(i)+"].attenuation",lightSource->attenuation);
+              lightShader->set("lights["+std::to_string(i)+"].cone_angles",glm::vec2(lightSource->cone_angles.x,lightSource->cone_angles.y));
+               i++;
+            }
+              // sky:
+            //   glm::vec3 skyTop=[1,0,0]
+             lightShader->set("sky.top",glm::vec3(-1,0,0));
+             lightShader->set("sky.middle",glm::vec3(-1,0,0));
+              lightShader->set("sky.below",glm::vec3(0,0,1));
+             
             command.mesh->draw();
         }
 

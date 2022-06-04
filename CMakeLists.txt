@@ -79,6 +79,8 @@ set(COMMON_SOURCES
         source/common/components/movement.cpp
         source/common/components/collision.hpp
         source/common/components/collision.cpp
+        source/common/components/light.hpp
+        source/common/components/light.cpp
         source/common/components/Snail.hpp
         source/common/components/Snail.cpp
         source/common/components/component-deserializer.hpp
@@ -107,6 +109,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${PROJECT_SOURCE_DIR}/bin)
 set(STATES_SOURCES
         source/states/play-state.hpp
         source/states/menu-state.hpp
+        source/states/game-over-state.hpp
         source/states/mesh-test-state.hpp
         source/states/transform-test-state.hpp
         source/states/pipeline-test-state.hpp

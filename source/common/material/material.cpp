@@ -93,6 +93,7 @@ namespace our {
         sampler->bind(4);
         shader->set("material.emissive",4);
         }
+        glActiveTexture(GL_TEXTURE0);
     }
 
     // This function read the material data from a json object
@@ -113,12 +114,12 @@ namespace our {
         }
         if(data.contains("roughness")){
            roughness = AssetLoader<Texture2D>::get(data.value("roughness", ""));
-
-           if(data.contains("emissive")){
+        }
+        if(data.contains("emissive")){
            emissive = AssetLoader<Texture2D>::get(data.value("emissive", ""));
         }
-        }
-           
+        sampler = AssetLoader<Sampler>::get(data.value("sampler", ""));
+
     }
 
 }
