@@ -79,11 +79,13 @@ namespace our
     public:
         int score;
         time_t start_time,end_time ;
+        bool entered_game;
 
         // Create an application with following configuration
         Application(const nlohmann::json &app_config) : app_config(app_config)
         {
             score = 0;
+            entered_game=false;
         }
         // On destruction, delete all the states
         ~Application()
@@ -121,6 +123,7 @@ namespace our
             {
                 nextState = it->second;
             }
+
         }
 
         // Class Getters.

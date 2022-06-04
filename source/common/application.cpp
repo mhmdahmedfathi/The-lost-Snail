@@ -342,7 +342,7 @@ int our::Application::run(int run_for_frames)
         else if (currentState == states["game_mode"])
         {
             time(&end_time);
-            if (abs(start_time - end_time) >= 60)
+            if (abs(start_time - end_time) >= 2)
                 changeState("game_over");
 
             ImGui::SetNextWindowSize(ImVec2(300, 100));

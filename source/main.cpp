@@ -9,7 +9,6 @@
 
 #include "states/play-state.hpp"
 #include "states/menu-state.hpp"
-#include "states/game-over-state.hpp"
 #include "states/mesh-test-state.hpp"
 #include "states/transform-test-state.hpp"
 #include "states/pipeline-test-state.hpp"

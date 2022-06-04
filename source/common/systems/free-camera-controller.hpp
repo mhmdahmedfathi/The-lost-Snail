@@ -110,7 +110,7 @@ namespace our
                     std::cout << " type " << Collision->getobstucaseType() << std::endl;
                     objPosition.y = 100;
                     if (Collision->getobstucaseType() != "danger")
-                        app->score += 0.1;
+                        app->score += 10;
                     break;
                 }
             }
