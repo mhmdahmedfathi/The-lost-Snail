@@ -13,6 +13,8 @@
 #include "input/keyboard.hpp"
 #include "input/mouse.hpp"
 
+#include <time.h>
+
 namespace our
 {
 
@@ -66,7 +68,6 @@ namespace our
         std::unordered_map<std::string, State *> states; // This will store all the states that the application can run
         State *currentState = nullptr;                   // This will store the current scene that is being run
         State *nextState = nullptr;                      // If it is requested to go to another scene, this will contain a pointer to that scene
-        std::string current_state_name;
 
         // Virtual functions to be overrode and change the default behaviour of the application
         // according to the example needs.
@@ -74,8 +75,10 @@ namespace our
         virtual WindowConfiguration getWindowConfiguration(); // Returns the WindowConfiguration current struct instance.
         virtual void setupCallbacks();                        // Sets-up the window callback functions from GLFW to our (Mouse/Keyboard) classes.
 
+    
     public:
         float score;
+        time_t start_time,end_time ;
 
         // Create an application with following configuration
         Application(const nlohmann::json &app_config) : app_config(app_config)
@@ -117,7 +120,6 @@ namespace our
             if (it != states.end())
             {
                 nextState = it->second;
-                current_state_name = name;
             }
         }
 

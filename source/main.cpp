@@ -9,6 +9,7 @@
 
 #include "states/play-state.hpp"
 #include "states/menu-state.hpp"
+#include "states/game-over-state.hpp"
 #include "states/mesh-test-state.hpp"
 #include "states/transform-test-state.hpp"
 #include "states/pipeline-test-state.hpp"
@@ -50,8 +51,8 @@ int main(int argc, char** argv) {
     // Register all the states of the project in the application
     app.registerState<Menustate>("main_menu");
     app.registerState<Playstate>("game_mode");
+    app.registerState<Menustate>("game_over");
     
-
     // Then choose the state to run based on the option "start-scene" in the config
     if(main_menu.contains(std::string{"start-scene"})){
         app.changeState(main_menu["start-scene"].get<std::string>());
