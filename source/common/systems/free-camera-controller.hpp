@@ -108,8 +108,9 @@ namespace our
                     std::cout << " X " << position.x << " => " << objPosition.x << std::endl;
                     std::cout << " Z " << position.z << " => " << objPosition.z << std::endl;
                     std::cout << " type " << Collision->getobstucaseType() << std::endl;
-                    objPosition.z = 0;
-                    app->score += 0.1;
+                    objPosition.y = 100;
+                    if (Collision->getobstucaseType() != "danger")
+                        app->score += 0.1;
                     break;
                 }
             }
