@@ -238,13 +238,16 @@ namespace our
             MVP_O = VP * command.localToWorld;
             command.material->shader->set("transform", MVP_O);
             command.mesh->draw();
+            ShaderProgram* lightShader=command.material->shader;
+            lightMaterial->shader=lightShader;
             int i=0;
+            lightMaterial->shader->set("light_count",lightSources.size());
             for (auto lightSource : lightSources)
             {
-              
+                
               lightSource->calculatePosition(command.localToWorld);
               lightSource->calculateDirection(command.localToWorld);
-
+              //- set light data
               lightMaterial->shader->set("lights["+std::to_string(i)+"].type",lightSource->lightType);
               lightMaterial->shader->set("lights["+std::to_string(i)+"].position",lightSource->position);
               lightMaterial->shader->set("lights["+std::to_string(i)+"].direction",lightSource->direction);
@@ -252,12 +255,18 @@ namespace our
               lightMaterial->shader->set("lights["+std::to_string(i)+"].specular",lightSource->specular);
               lightMaterial->shader->set("lights["+std::to_string(i)+"].attenuation",lightSource->attenuation);
               lightMaterial->shader->set("lights["+std::to_string(i)+"].cone_angles",lightSource->cone_angles);
-             
+              // sky:
+            //   glm::vec3 skyTop=[1,0,0]
+              lightMaterial->shader->set("sky.top",this->skySphere);
+              lightMaterial->shader->set("sky.middle",(-1,0,0));
+              lightMaterial->shader->set("sky.below",(0,0,1));
+              //---
               lightMaterial->shader->set("VP",VP);
               lightMaterial->shader->set("M",command.localToWorld);
               lightMaterial->shader->set("eye",eye);
               lightMaterial->shader->set("M_IT",glm::inverse(command.localToWorld));
-             i++;
+            
+               i++;
             }
         }
 
