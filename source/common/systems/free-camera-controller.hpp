@@ -105,9 +105,6 @@ namespace our
                 // collision only if on both axes
                 if (collisionX && collisionY)
                 {
-                    std::cout << " X " << position.x << " => " << objPosition.x << std::endl;
-                    std::cout << " Z " << position.z << " => " << objPosition.z << std::endl;
-                    std::cout << " type " << Collision->getobstucaseType() << std::endl;
                     world->markForRemoval(Collision_entity);
                     if (Collision->getobstucaseType() == "danger")
                         app->loser = true;

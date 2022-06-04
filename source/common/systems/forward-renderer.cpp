@@ -234,10 +234,10 @@ namespace our
         for (auto command : opaqueCommands)
         {
             ShaderProgram *lightShader = command.material->shader;
+            command.material->setup();
             //??not sure
             if (!lightShader)
                 continue;
-            command.material->setup();
             MVP_O = VP * command.localToWorld;
             command.material->shader->set("transform", MVP_O);
             int i = 0;
@@ -246,28 +246,31 @@ namespace our
             lightShader->set("M", command.localToWorld);
             lightShader->set("eye", eye);
             lightShader->set("M_IT", glm::transpose(glm::inverse(command.localToWorld)));
-            lightShader->set("light_count", (int)lightSources.size());
-            for (int i = 0; i < lightEntities.size(); i++)
-            {
-           LightComponent *lightSource = lightEntities[i]->getComponent<LightComponent>();
-              //- set light data in the shader
-               glm::vec3 rotation = lightEntities[i]->localTransform.rotation;
             
-           lightShader->set("lights["+std::to_string(i)+"].direction", (glm::vec3)((glm::yawPitchRoll(rotation[1], rotation[0], rotation[2]) * (glm::vec4(0, -1, 0, 0)))));
-              lightShader->set("lights["+std::to_string(i)+"].type",lightSource->lightType);
-              lightShader->set("lights["+std::to_string(i)+"].position", lightEntities[i]->localTransform.position);
-           //   lightShader->set("lights["+std::to_string(i)+"].direction", lightEntities[i]->localTransform.rotation);
-              lightShader->set("lights["+std::to_string(i)+"].diffuse",lightSource->diffuse);
-              lightShader->set("lights["+std::to_string(i)+"].specular",lightSource->specular);
-              lightShader->set("lights["+std::to_string(i)+"].attenuation",lightSource->attenuation);
-              lightShader->set("lights["+std::to_string(i)+"].cone_angles",glm::vec2(lightSource->cone_angles.x,lightSource->cone_angles.y));
-               i++;
+            if (auto light_material = dynamic_cast<LitMaterial *>(command.material); light_material)
+            {
+                lightShader->set("light_count", (int)lightSources.size());
+                for (int i = 0; i < lightEntities.size(); i++)
+                {
+                    LightComponent *lightSource = lightEntities[i]->getComponent<LightComponent>();
+                    //- set light data in the shader
+                    glm::vec3 rotation = lightEntities[i]->localTransform.rotation;
+
+                    lightShader->set("lights[" + std::to_string(i) + "].direction", (glm::vec3)((glm::yawPitchRoll(rotation[1], rotation[0], rotation[2]) * (glm::vec4(0, -1, 0, 0)))));
+                    lightShader->set("lights[" + std::to_string(i) + "].type", lightSource->lightType);
+                    lightShader->set("lights[" + std::to_string(i) + "].position", lightEntities[i]->localTransform.position);
+                    //   lightShader->set("lights["+std::to_string(i)+"].direction", lightEntities[i]->localTransform.rotation);
+                    lightShader->set("lights[" + std::to_string(i) + "].diffuse", lightSource->diffuse);
+                    lightShader->set("lights[" + std::to_string(i) + "].specular", lightSource->specular);
+                    lightShader->set("lights[" + std::to_string(i) + "].attenuation", lightSource->attenuation);
+                    lightShader->set("lights[" + std::to_string(i) + "].cone_angles", glm::vec2(lightSource->cone_angles.x, lightSource->cone_angles.y));
+                    i++;
+                }
             }
-              // sky:
-            lightShader->set("sky.top",skyTop);
-            lightShader->set("sky.middle",skyMiddle);
-            lightShader->set("sky.below",skyBottom);
-             
+                            // sky:
+            lightShader->set("sky.top", skyTop);
+            lightShader->set("sky.middle", skyMiddle);
+            lightShader->set("sky.below", skyBottom);
             command.mesh->draw();
         }
 

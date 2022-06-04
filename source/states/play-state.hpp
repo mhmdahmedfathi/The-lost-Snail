@@ -55,6 +55,7 @@ class Playstate : public our::State
         // Here, we just run a bunch of systems to control the world logic
         movementSystem.update(&world, (float)deltaTime);
         cameraController.update(&world, (float)deltaTime);
+        world.deleteMarkedEntities();
         // And finally we use the renderer system to draw the scene
         renderer.render(&world);
     }
