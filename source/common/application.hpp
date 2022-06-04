@@ -77,13 +77,13 @@ namespace our
 
     
     public:
-        float score;
+        int score;
         time_t start_time,end_time ;
 
         // Create an application with following configuration
         Application(const nlohmann::json &app_config) : app_config(app_config)
         {
-            score = 0.0;
+            score = 0;
         }
         // On destruction, delete all the states
         ~Application()

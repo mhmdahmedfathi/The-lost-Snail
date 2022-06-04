@@ -345,19 +345,23 @@ int our::Application::run(int run_for_frames)
             if (abs(start_time - end_time) >= 60)
                 changeState("game_over");
 
-            ImGui::SetNextWindowSize(ImVec2(300, 120));
+            ImGui::SetNextWindowSize(ImVec2(300, 100));
             ImGui::PushFont(font2);
 
             ImGui::Begin("Player's progress");
             ImGuiStyle *style = &ImGui::GetStyle();
             ImVec4 *colors = style->Colors;
-            colors[ImGuiCol_WindowBg] = ImVec4(0.0f, 0.0f, 0.0f, 0.0f);
-            colors[ImGuiCol_Border] = ImVec4(0.0f, 0.0f, 0.0f, 0.0f);
+            colors[ImGuiCol_WindowBg] = ImVec4(0.0f, 0.0f, 0.0f, 0.6f);
             colors[ImGuiCol_ResizeGrip] = ImVec4(0.0f, 0.0f, 0.0f, 0.0f);
             colors[ImGuiCol_ResizeGripActive] = ImVec4(0.0f, 0.0f, 0.0f, 0.0f);
             colors[ImGuiCol_ResizeGripHovered] = ImVec4(0.0f, 0.0f, 0.0f, 0.0f);
 
-            ImGui::ProgressBar(score, ImVec2(280, 40));
+
+            // ImGui::ProgressBar(score, ImVec2(280, 40));
+            std::string l1 = "Score: ";
+            std::string l2 = std::to_string(int(score));
+            std::string totalLine = l1 + l2;
+            ImGui::Text(totalLine.c_str());
             ImGui::PopFont();
 
             ImGui::End();
@@ -379,9 +383,9 @@ int our::Application::run(int run_for_frames)
             ImGui::SetCursorPosX((ImGui::GetWindowSize().x - ImGui::CalcTextSize("GAME OVER").x) * 0.4);
             ImGui::PushFont(font4);
             std::string l1 = "Score: ";
-            std::string l2 = std::to_string(int(score * 100));
-            std::string l3 = "%%";
-            std::string totalLine = l1 + l2 + l3;
+            std::string l2 = std::to_string(int(score));
+            // std::string l3 = "%%";
+            std::string totalLine = l1 + l2;
             ImGui::Text(totalLine.c_str());
 
             ImGui::PopFont();
