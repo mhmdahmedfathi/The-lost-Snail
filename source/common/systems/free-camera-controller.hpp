@@ -52,9 +52,9 @@ namespace our
                 if (Snail)
                     break;
             }
-            
+
             // If there is no entity with both a CameraComponent and a FreeCameraControllerComponent, we can do nothing so we return
-            if (!(Snail ))
+            if (!(Snail))
                 return;
             // Get the entity that we found via getOwner of camera (we could use controller->getOwner())
             Entity *entity = Snail->getOwner();
@@ -81,35 +81,39 @@ namespace our
             for (auto entity : world->getEntities())
             {
                 Collision = entity->getComponent<CollisionComponent>();
-                if (!(Collision ))
-                continue;
+                if (!(Collision))
+                    continue;
                 Collision_entity = Collision->getOwner();
 
                 glm::vec3 &objPosition = Collision_entity->localTransform.position;
 
                 bool collisionX = false;
-                
-                if( Collision->getobstucaseType() == "danger"){
-                collisionX = position.x + 1.5 >= objPosition.x &&
-                                    objPosition.x + 1.5 >= position.x;
-                }else{
-                collisionX = position.x + 1 >= objPosition.x &&
-                                    objPosition.x + 1 >= position.x;    
+
+                if (Collision->getobstucaseType() == "danger")
+                {
+                    collisionX = position.x + 1.5 >= objPosition.x &&
+                                 objPosition.x + 1.5 >= position.x;
+                }
+                else
+                {
+                    collisionX = position.x + 1 >= objPosition.x &&
+                                 objPosition.x + 1 >= position.x;
                 }
                 // collision z-axis?
                 bool collisionY = position.z + 1.0 >= objPosition.z &&
-                                    objPosition.z + 1.0 >= position.z;
+                                  objPosition.z + 1.0 >= position.z;
                 // collision only if on both axes
-                    if (collisionX && collisionY) {
-                        std::cout<<" X "<< position.x <<" => "<< objPosition.x  <<std::endl;
-                        std::cout<<" Z "<< position.z <<" => "<< objPosition.z  <<std::endl;
-                        std::cout<<" type " << Collision->getobstucaseType()  <<std::endl;
-                        objPosition.z=0;
-                        break;
-                    }
+                if (collisionX && collisionY)
+                {
+                    std::cout << " X " << position.x << " => " << objPosition.x << std::endl;
+                    std::cout << " Z " << position.z << " => " << objPosition.z << std::endl;
+                    std::cout << " type " << Collision->getobstucaseType() << std::endl;
+                    objPosition.z = 0;
+                    app->score += 0.1;
+                    break;
+                }
             }
 
-            
             // If the left mouse button is pressed, we get the change in the mouse location
             // and use it to update the camera rotation
             if (app->getMouse().isPressed(GLFW_MOUSE_BUTTON_1))
@@ -142,11 +146,11 @@ namespace our
 
             glm::vec3 current_sensitivity = controller->positionSensitivity;
             // If the LEFT SHIFT key is pressed, we multiply the position sensitivity by the speed up factor
-            //if(app->getKeyboard().isPressed(GLFW_KEY_LEFT_SHIFT)) current_sensitivity *= controller->speedupFactor;
-            //current_sensitivity *= controller->speedupFactor;
+            // if(app->getKeyboard().isPressed(GLFW_KEY_LEFT_SHIFT)) current_sensitivity *= controller->speedupFactor;
+            // current_sensitivity *= controller->speedupFactor;
             // make it move forward all the time
             position += front * (deltaTime * current_sensitivity.z);
-            //We change the camera position based on the keys WASD/QE
+            // We change the camera position based on the keys WASD/QE
             if (position.x < 2.35222)
             {
 

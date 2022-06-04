@@ -232,7 +232,7 @@ int our::Application::run(int run_for_frames)
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
     ImGuiIO &io = ImGui::GetIO();
-    // ImFont *font = io.Fonts->AddFontFromFileTTF("../assets/fonts/Astral Sisters.ttf", 20.0f);
+    // ImFont *font = io.Fonts->AddFontFromFileTTF("fonts\\Astral Sisters.ttf", 20.0f);
 
     ImGui::StyleColorsDark();
 
@@ -297,7 +297,6 @@ int our::Application::run(int run_for_frames)
             // ImGui::PushFont(font);
             ImGui::Text("THE LOST SNAIL!");
             ImGui::Text("HELP THE SNAIL TO RETURN TO SPONGEPOP...");
-
             // ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(0,255,0,255));
             // ImGui::PopFont();
 
@@ -311,6 +310,14 @@ int our::Application::run(int run_for_frames)
             }
 
             // ImGui::PopStyleColor();
+            ImGui::End();
+        }
+
+        else
+        {
+            ImGui::SetNextWindowSize(ImVec2(220, 120));
+            ImGui::Begin("Player's progress");
+            ImGui::ProgressBar(score,ImVec2(200, 75));
             ImGui::End();
         }
         // If ImGui is using the mouse or keyboard, then we don't want the captured events to affect our keyboard and mouse objects.

@@ -19,7 +19,7 @@ class Playstate : public our::State
 
     void onInitialize() override
     {
-        std::string game_mode = "config/app.jsonc";
+        std::string game_mode = "config/game.jsonc";
         std::ifstream file_in(game_mode);
         if (!file_in)
         {
