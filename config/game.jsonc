@@ -1272,7 +1272,7 @@
             "components": [
                 {
                     "position":[ 2, 0, 0],
-                    "type": "lighted",
+                    "type": "light",
                     "typeOfLight":"DIRECTIONAL",
                     "diffuse":[ 1, 1, 1],
                     "specular":[1, 1, 1],
@@ -1286,7 +1286,7 @@
              "position":[ 1, 0, 0],
             "components": [
                 {
-                    "type": "lighted",
+                    "type": "light",
                     "position":[ 1, 0, 0],
                     "typeOfLight":"SPOT",
                     "diffuse":[ 1, 0.9, 0.7],
@@ -1302,7 +1302,7 @@
            "components": [
                {
                 "position":[ -2, 0, 0],
-                   "type": "lighted",
+                   "type": "light",
                    "typeOfLight":"POINT",
                    "diffuse":[ 1, 0.2, 0.1],
                    "specular":[ 1, 0.2, 0.1],

@@ -255,10 +255,12 @@ namespace our
                     LightComponent *lightSource = lightEntities[i]->getComponent<LightComponent>();
                     //- set light data in the shader
                     glm::vec3 rotation = lightEntities[i]->localTransform.rotation;
-
-                    lightShader->set("lights[" + std::to_string(i) + "].direction", (glm::vec3)((glm::yawPitchRoll(rotation[1], rotation[0], rotation[2]) * (glm::vec4(0, -1, 0, 0)))));
+                    glm::vec3 position = lightEntities[i]->getLocalToWorldMatrix()*glm::vec4(0,0,0,1);
+                    glm::vec3 direction = lightEntities[i]->getLocalToWorldMatrix()*glm::vec4(0,-1,0,0);
+                    
+                    lightShader->set("lights[" + std::to_string(i) + "].direction",direction);
                     lightShader->set("lights[" + std::to_string(i) + "].type", lightSource->lightType);
-                    lightShader->set("lights[" + std::to_string(i) + "].position", lightEntities[i]->localTransform.position);
+                    lightShader->set("lights[" + std::to_string(i) + "].position", position);
                     //   lightShader->set("lights["+std::to_string(i)+"].direction", lightEntities[i]->localTransform.rotation);
                     lightShader->set("lights[" + std::to_string(i) + "].diffuse", lightSource->diffuse);
                     lightShader->set("lights[" + std::to_string(i) + "].specular", lightSource->specular);

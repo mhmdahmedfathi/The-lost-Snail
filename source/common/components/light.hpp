@@ -29,7 +29,7 @@ namespace our {
         std::string lightTypeStr;
         // Reads light parameters from the given json object
         void deserialize(const nlohmann::json& data) override;
-        static std::string getID() { return "lighted"; }
+        static std::string getID() { return "light"; }
 
         void calculatePosition (  glm::mat4 localToWorld );
         void calculateDirection(  glm::mat4 localToWorld);
