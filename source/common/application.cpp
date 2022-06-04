@@ -11,6 +11,8 @@
 #include <filesystem>
 
 #include <flags/flags.h>
+#include <time.h>
+#include <unistd.h>
 
 // Include the Dear ImGui implementation headers
 #define IMGUI_IMPL_OPENGL_LOADER_GLAD2
@@ -232,7 +234,10 @@ int our::Application::run(int run_for_frames)
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
     ImGuiIO &io = ImGui::GetIO();
-    // ImFont *font = io.Fonts->AddFontFromFileTTF("fonts\\Astral Sisters.ttf", 20.0f);
+    ImFont *font2 = io.Fonts->AddFontFromFileTTF("assets\\fonts\\Brand New Retro Italic.ttf", 30.0f);
+    ImFont *font1 = io.Fonts->AddFontFromFileTTF("assets\\fonts\\Erotica.ttf", 60.0f);
+    ImFont *font3 = io.Fonts->AddFontFromFileTTF("assets\\fonts\\game_over.ttf", 180.0f);
+    ImFont *font4 = io.Fonts->AddFontFromFileTTF("assets\\fonts\\game_over.ttf", 100.0f);
 
     ImGui::StyleColorsDark();
 
@@ -286,40 +291,123 @@ int our::Application::run(int run_for_frames)
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
-        // ImFont *font1 = io.Fonts->AddFontDefault();
 
         if (currentState)
             currentState->onImmediateGui(); // Call to run any required Immediate GUI.
-        if (current_state_name == "main_menu")
+        if (currentState == states["main_menu"])
         {
-            ImGui::SetNextWindowSize(ImVec2(320, 350));
+            ImGui::SetNextWindowSize(ImVec2(700, 500));
             ImGui::Begin("Main menu");
-            // ImGui::PushFont(font);
-            ImGui::Text("THE LOST SNAIL!");
-            ImGui::Text("HELP THE SNAIL TO RETURN TO SPONGEPOP...");
-            // ImGui::PushStyleColor(ImGuiCol_Text, IM_COL32(0,255,0,255));
-            // ImGui::PopFont();
+            ImGuiStyle *style = &ImGui::GetStyle();
+            ImVec4 *colors = style->Colors;
+            colors[ImGuiCol_Button] = ImVec4(128.0f / 256, 0.0f, 128.0f / 256, 1.0f);
+            colors[ImGuiCol_ButtonActive] = ImVec4(110.0f / 256, 0.0f, 110.0f / 256, 1.0f);
+            colors[ImGuiCol_ButtonHovered] = ImVec4(110.0f / 256, 0.0f, 110.0f / 256, 1.0f);
+            colors[ImGuiCol_WindowBg] = ImVec4(0.0f, 0.0f, 0.0f, 0.6f);
+            colors[ImGuiCol_TitleBg] = ImVec4(110.0f / 256, 0.0f, 110.0f / 256, 1.0f);
+            colors[ImGuiCol_TitleBgActive] = ImVec4(110.0f / 256, 0.0f, 110.0f / 256, 1.0f);
+            colors[ImGuiCol_TitleBgCollapsed] = ImVec4(110.0f / 256, 0.0f, 110.0f / 256, 1.0f);
+            colors[ImGuiCol_ResizeGrip] = ImVec4(0.0f, 0.0f, 0.0f, 0.0f);
+            colors[ImGuiCol_ResizeGripActive] = ImVec4(0.0f, 0.0f, 0.0f, 0.0f);
+            colors[ImGuiCol_ResizeGripHovered] = ImVec4(0.0f, 0.0f, 0.0f, 0.0f);
 
-            if (ImGui::Button("Start the game", ImVec2(300, 120)))
+            ImGui::SetCursorPosX((ImGui::GetWindowSize().x - ImGui::CalcTextSize("THE LOST SNAIL").x) * 0.2);
+            ImGui::SetCursorPosY((ImGui::GetWindowSize().y - ImGui::CalcTextSize("THE LOST SNAIL").y) * 0.2);
+
+            ImGui::PushFont(font1);
+            ImGui::Text("THE LOST SNAIL");
+            ImGui::PopFont();
+
+            ImGui::PushFont(font2);
+            ImGui::SetCursorPosX((ImGui::GetWindowSize().x - ImGui::CalcTextSize("Start the game").x) * 0.36);
+            ImGui::SetCursorPosY((ImGui::GetWindowSize().y - ImGui::CalcTextSize("Start the game").y) * 0.4);
+
+            if (ImGui::Button("Start the game", ImVec2(350, 120)))
             {
+                time(&start_time);
                 changeState("game_mode");
             }
-            if (ImGui::Button("Exit", ImVec2(300, 120)))
+
+            ImGui::SetCursorPosX((ImGui::GetWindowSize().x - ImGui::CalcTextSize("Start the game").x) * 0.36);
+
+            if (ImGui::Button("Exit", ImVec2(350, 120)))
+
             {
                 return 0; // Good bye
             }
-
-            // ImGui::PopStyleColor();
+            ImGui::PopFont();
             ImGui::End();
         }
 
+        else if (currentState == states["game_mode"])
+        {
+            time(&end_time);
+            if (abs(start_time - end_time) >= 60)
+                changeState("game_over");
+
+            ImGui::SetNextWindowSize(ImVec2(300, 100));
+            ImGui::PushFont(font2);
+
+            ImGui::Begin("Player's progress");
+            ImGuiStyle *style = &ImGui::GetStyle();
+            ImVec4 *colors = style->Colors;
+            colors[ImGuiCol_WindowBg] = ImVec4(0.0f, 0.0f, 0.0f, 0.6f);
+            colors[ImGuiCol_ResizeGrip] = ImVec4(0.0f, 0.0f, 0.0f, 0.0f);
+            colors[ImGuiCol_ResizeGripActive] = ImVec4(0.0f, 0.0f, 0.0f, 0.0f);
+            colors[ImGuiCol_ResizeGripHovered] = ImVec4(0.0f, 0.0f, 0.0f, 0.0f);
+
+
+            // ImGui::ProgressBar(score, ImVec2(280, 40));
+            std::string l1 = "Score: ";
+            std::string l2 = std::to_string(int(score));
+            std::string totalLine = l1 + l2;
+            ImGui::Text(totalLine.c_str());
+            ImGui::PopFont();
+
+            ImGui::End();
+        }
         else
         {
-            ImGui::SetNextWindowSize(ImVec2(220, 120));
-            ImGui::Begin("Player's progress");
-            ImGui::ProgressBar(score,ImVec2(200, 75));
-            ImGui::End();
+            ImGuiStyle *style = &ImGui::GetStyle();
+            ImVec4 *colors = style->Colors;
+            colors[ImGuiCol_WindowBg] = ImVec4(0.0f, 0.0f, 0.0f, 0.6f);
+            ImGui::SetNextWindowSize(ImVec2(1500, 100));
+
+            ImGui::SetCursorPosX((ImGui::GetWindowSize().x - ImGui::CalcTextSize("GAME OVER").x) * 0.2);
+            ImGui::SetCursorPosY((ImGui::GetWindowSize().y - ImGui::CalcTextSize("GAME OVER").y) * 0.2);
+
+            ImGui::PushFont(font3);
+            ImGui::Text("GAME OVER");
+            ImGui::PopFont();
+
+            ImGui::SetCursorPosX((ImGui::GetWindowSize().x - ImGui::CalcTextSize("GAME OVER").x) * 0.4);
+            ImGui::PushFont(font4);
+            std::string l1 = "Score: ";
+            std::string l2 = std::to_string(int(score));
+            // std::string l3 = "%%";
+            std::string totalLine = l1 + l2;
+            ImGui::Text(totalLine.c_str());
+
+            ImGui::PopFont();
+
+            ImGui::SetCursorPosX((ImGui::GetWindowSize().x - ImGui::CalcTextSize("Restart the game").x) * 0.4);
+            ImGui::SetCursorPosY((ImGui::GetWindowSize().y - ImGui::CalcTextSize("Restart the game").y) * 0.6);
+
+            if (ImGui::Button("Restart the game", ImVec2(380, 120)))
+            {
+                time(&start_time);
+                changeState("game_mode");
+            }
+
+            ImGui::SetCursorPosX((ImGui::GetWindowSize().x - ImGui::CalcTextSize("Restart the game").x) * 0.4);
+
+            if (ImGui::Button("Exit", ImVec2(380, 120)))
+
+            {
+                return 0; // Good bye
+            }
         }
+
         // If ImGui is using the mouse or keyboard, then we don't want the captured events to affect our keyboard and mouse objects.
         // For example, if you're focusing on an input and writing "W", the keyboard object shouldn't record this event.
         keyboard.setEnabled(!io.WantCaptureKeyboard, window);
