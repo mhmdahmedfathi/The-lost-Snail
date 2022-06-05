@@ -80,12 +80,14 @@ namespace our
         int score;
         time_t start_time,end_time ;
         bool loser;
+        bool enable_effect;
 
         // Create an application with following configuration
         Application(const nlohmann::json &app_config) : app_config(app_config)
         {
             score = 0;
             loser=false;
+            enable_effect = false;
         }
         // On destruction, delete all the states
         ~Application()

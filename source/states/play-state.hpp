@@ -17,6 +17,8 @@ class Playstate : public our::State
     our::FreeCameraControllerSystem cameraController;
     our::MovementSystem movementSystem;
 
+    bool enable_effect;
+
     void onInitialize() override
     {
         std::string game_mode = "config/game.jsonc";
@@ -58,6 +60,7 @@ class Playstate : public our::State
         world.deleteMarkedEntities();
         // And finally we use the renderer system to draw the scene
         renderer.render(&world);
+        renderer.enable_effect = getApp()->enable_effect;
     }
 
     void onDestroy() override

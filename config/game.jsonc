@@ -12,7 +12,7 @@
     "scene": {
         "renderer":{
             "sky": "assets/textures/galaxy.jpg",
-            "postprocess": "assets/shaders/postprocess/vignette.frag",
+            "postprocess": "assets/shaders/postprocess/tone-mapping.frag",
                 "skyTop":[ 0.3, 0.6, 1.0],
                 "skyMiddle":[ 0.3, 0.3, 0.3],
                 "skyBottom":[0.1, 0.1, 0.0]

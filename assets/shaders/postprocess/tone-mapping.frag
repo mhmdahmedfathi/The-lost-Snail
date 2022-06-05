@@ -3,12 +3,11 @@
 out vec4 frag_color;
 in vec2 tex_coord;
 
-//uniform sampler2D hdrBuffer;
 uniform sampler2D tex;
 uniform float exposure = 1.0;
 
 void main()
-{             
+{      
     const float gamma = 2.2;
     vec3 hdrColor = texture(tex, tex_coord).rgb;
   

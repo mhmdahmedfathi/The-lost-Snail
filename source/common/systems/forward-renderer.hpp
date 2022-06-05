@@ -50,9 +50,11 @@ namespace our
         glm::vec3 skyMiddle;
         glm::vec3 skyBottom;
 
-        
 
     public:
+
+        bool enable_effect;
+
         // Initialize the renderer including the sky and the Postprocessing objects.
         // windowSize is the width & height of the window (in pixels).
         void initialize(glm::ivec2 windowSize, const nlohmann::json& config);

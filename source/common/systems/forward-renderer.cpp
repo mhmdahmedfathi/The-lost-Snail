@@ -3,6 +3,7 @@
 #include "../texture/texture-utils.hpp"
 #include "iostream"
 #include <glm/gtx/euler_angles.hpp>
+
 namespace our
 {
     void ForwardRenderer::initialize(glm::ivec2 windowSize, const nlohmann::json &config)
@@ -94,11 +95,15 @@ namespace our
             postprocessShader->attach(config.value<std::string>("postprocess", ""), GL_FRAGMENT_SHADER);
             postprocessShader->link();
 
+            //FreeCameraControllerSystem frc = FreeCameraControllerSystem();
+
             // Create a post processing material
             postprocessMaterial = new TexturedMaterial();
             postprocessMaterial->shader = postprocessShader;
             postprocessMaterial->texture = colorTarget;
             postprocessMaterial->sampler = postprocessSampler;
+            //postprocessMaterial-> ?
+            //postprocessMaterial->shader->set("enable_effect", this->enable_effect);
             // The default options are fine but we don't need to interact with the depth buffer
             // so it is more performant to disable the depth mask
             postprocessMaterial->pipelineState.depthMask = false;
@@ -222,8 +227,10 @@ namespace our
         // If there is a postprocess material, bind the framebuffer
         if (postprocessMaterial)
         {
-            // TODO: (Req 10) bind the framebuffer
+            if(enable_effect && postprocessMaterial){ 
+                // TODO: (Req 10) bind the framebuffer
             glBindFramebuffer(GL_DRAW_FRAMEBUFFER, postprocessFrameBuffer);
+            }
         }
         // TODO: (Req 8) Clear the color and depth buffers
         // If you have depth testing enabled you should also clear the depth buffer before each frame using GL_DEPTH_BUFFER_BIT; otherwise you're stuck with the depth values from last frame:
@@ -310,13 +317,16 @@ namespace our
         // If there is a postprocess material, apply postprocessing
         if (postprocessMaterial)
         {
-            // TODO: (Req 10) Return to the default framebuffer
-            glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
+            if(enable_effect && postprocessMaterial){
+                // TODO: (Req 10) Return to the default framebuffer
+                glBindFramebuffer(GL_DRAW_FRAMEBUFFER, 0);
 
-            // TODO: (Req 10) Setup the postprocess material and draw the fullscreen triangle
-            postprocessMaterial->setup();
-            glBindVertexArray(this->postProcessVertexArray);
-            glDrawArrays(GL_TRIANGLES, 0, 3);
+                // TODO: (Req 10) Setup the postprocess material and draw the fullscreen triangle
+                postprocessMaterial->setup();
+                glBindVertexArray(this->postProcessVertexArray);
+                glDrawArrays(GL_TRIANGLES, 0, 3);
+            }
+            
         }
         // if  there is a light material apply it
         if (lightMaterial)

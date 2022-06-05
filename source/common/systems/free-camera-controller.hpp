@@ -25,6 +25,9 @@ namespace our
         bool mouse_locked = false; // Is the mouse locked
 
     public:
+
+        //bool enable_effect = false;
+
         // When a state enters, it should call this function and give it the pointer to the application
         void enter(Application *app)
         {
@@ -106,11 +109,13 @@ namespace our
                 if (collisionX && collisionY)
                 {
                     world->markForRemoval(Collision_entity);
-                    if (Collision->getobstucaseType() == "danger")
+                    if (Collision->getobstucaseType() == "danger"){
                         app->loser = true;
+                    }
                     else
                         app->score += 10;
-
+                        if(app->score >=60)
+                            app->enable_effect = true;
                     break;
                 }
             }

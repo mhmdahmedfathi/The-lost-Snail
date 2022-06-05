@@ -423,6 +423,7 @@ int our::Application::run(int run_for_frames)
                 time(&start_time);
                 loser = false;
                 score = 0;
+                enable_effect = false;
                 registerState<Playstate>("game_mode");
                 changeState("game_mode");
             }
