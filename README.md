@@ -2,8 +2,8 @@
 
 <p align="center">
   <a href="" rel="noopener">
- <img width=100% src="Screenshots/start.png" alt="logo"></a>
- <video src='Screenshots/ToEnd.mp4' width=180/>
+    <img width=100% src="Screenshots/start.png" alt="logo"></a>
+    <img src="Screenshots/ToEnd.gif" width="400" height="400" />
 </p>
 <p align="center">
     <br> 
