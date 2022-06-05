@@ -26,21 +26,22 @@ namespace our
        
 
         // I didn't assign default values (second parameter of data.value)
-        diffuse = data.value("diffuse",diffuse);
-        specular = data.value("specular",specular);
         color = data.value("color", color);
         initPosition = data.value("position", initPosition);
         initDirection = data.value("direction", initDirection);
-
+        diffuse = glm::vec3(data.value("diffuse", glm::vec3(1, 0.9, 0.7)));
+        specular = glm::vec3(data.value("specular", glm::vec3(1, 0.9, 0.7)));
+        // cone_angles = glm::vec2(data.value("cone_angles", glm::vec2(glm::radians(90.0f), glm::radians(120.0f))));
         if (lightType != 0)
         {
-            attenuation = data.value("attenuation",attenuation);
+            attenuation = glm::vec3(data.value("attenuation", glm::vec3(1, 0, 0)));
         }
 
         if (lightType ==2)
         {
           //  glm::vec2 angles =
-          cone_angles =  data.value("cone_angles",cone_angles);
+            cone_angles.x = glm::radians((float)data.value("cone_angles.inner",90));
+            cone_angles.y = glm::radians((float)data.value("cone_angles.outer",120));
           //glm::radians(angles[0]), glm::radians(angles[1]);
         }
     }

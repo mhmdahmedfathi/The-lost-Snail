@@ -249,7 +249,7 @@ namespace our
             
             if (auto light_material = dynamic_cast<LitMaterial *>(command.material); light_material)
             {
-                lightShader->set("light_count", (int)lightSources.size());
+                lightShader->set("light_count", (int)lightEntities.size());
                 for (int i = 0; i < lightEntities.size(); i++)
                 {
                     LightComponent *lightSource = lightEntities[i]->getComponent<LightComponent>();
