@@ -37,7 +37,7 @@
         "wood": "assets/textures/wood.jpg",
         "glass": "assets/textures/glass-panels.png",
         "monkey": "assets/textures/monkey.png",
-        "snail": "assets/textures/snail.png",
+        "snail": "assets/textures/snail2.png",
         "floor": "assets/textures/floor.png",
         "enemy": "assets/textures/tex_mrkrabs.png",
         "coin": "assets/textures/yellowCoin.png",
@@ -187,8 +187,8 @@
           {
             "type": "light",
             "typeOfLight": "POINT",
-            "diffuse": [0, 1, 1],
-            "specular": [0, 1, 1],
+            "diffuse": [1, 1, 1],
+            "specular": [1, 1, 1],
             "attenuation": [0.001, 0.001, 0.0001]
           }
         ],
