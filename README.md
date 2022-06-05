@@ -70,17 +70,23 @@ git clone https://github.com/mhmdahmedfathi/The-lost-Snail
    <hr>
     <img width=100% src="Screenshots/run.png" alt="logo">
     <hr>
-    if you win, you will find
+  
+   # if you win
+
+   # Congratulations! you helped Saree3 to return his home with SpongeBob.
+ 
+![home](https://user-images.githubusercontent.com/76243256/172072760-9dd016c8-e73b-442c-9f2f-13dbe0cd103b.png)
+  
    <img width=100% src="Screenshots/win.png" alt="logo">
    <hr>
-   else if you lose, you will find
+  
+   # if you lose
+  
+   # Restart the game, Saree3 still waits you so try again!
+  
    <img width=100% src="Screenshots/lose.png" alt="logo">
    <hr>
 </div>
 
-## 📷 Quick demo
-
-
-https://user-images.githubusercontent.com/76264155/172072296-bdec87e7-fad4-4190-80f3-16d34382487a.mp4
 
 
