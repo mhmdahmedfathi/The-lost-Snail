@@ -69,7 +69,7 @@
           "specular": "white",
           "roughness": "galaxy_gradient",
           "emissive": "black",
-          "ambient_occlusion":"white"
+          "ambient_occlusion": "white"
         },
         "enemy": {
           "type": "textured",
@@ -116,9 +116,11 @@
           "texture": "coin",
           "sampler": "default",
           "albedo": "coin",
-          "specular": "yellow"
+          "specular": "yellow",
+          "roughness": "black",
+          "emissive": "black",
+          "ambient_occlusion": "white"
         }
-        
       }
     },
     "world": [
@@ -1344,7 +1346,6 @@
           }
         ]
       }
-      
     ]
   }
 }
