@@ -167,20 +167,15 @@
                       
                         "type": "light",
                         "typeOfLight":"DIRECTIONAL",
-                        "diffuse":[ 11, 12, 1],
-                        "specular":[ 12, 1, 1],
-                        "color":[0,1,0,1]
-                      
+                        "diffuse":[ 0, 0, 1],
+                        "specular":[ 0, 0, 1]
                     },
-                    
                     {
-                      
                         "type": "light",
                         "typeOfLight":"POINT",
-                        "diffuse":[ 0.4, 1, 1],
-                        "specular":[ 0.4, 1, 1],
-                        "attenuation":[0.001, 0.001,0.0001],
-                        "color":[0,0,1,1]
+                        "diffuse":[ 0, 1, 1],
+                        "specular":[ 0, 1, 1],
+                        "attenuation":[0.001, 0.001,0.0001]
                     }
                 ],
                 "children": [{
