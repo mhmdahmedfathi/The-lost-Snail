@@ -35,14 +35,16 @@
         "coin": "assets/textures/yellowCoin.png",
         "yellow": "assets/textures/yellow2.png",
         "white": "assets/textures/white.png",
-        "galaxy_gradient": "assets/textures/galaxy_gradient.jpg"
+        "galaxy_gradient": "assets/textures/galaxy_gradient.jpg",
+        "home":"assets/textures/final.png"
       },
       "meshes": {
         "plane": "assets/models/plane.obj",
         "snail": "assets/models/gray_snail.obj",
         "floor": "assets/models/floor.obj",
         "enemy": "assets/models/mrkrabs.obj",
-        "coin": "assets/models/yellowCoin.obj"
+        "coin": "assets/models/yellowCoin.obj",
+        "home": "assets/models/KrustyKrab.obj"
       },
       "samplers": {
         "default": {},
@@ -120,6 +122,21 @@
           "roughness": "black",
           "emissive": "black",
           "ambient_occlusion": "white"
+        },
+      "home": {
+          "type": "textured",
+          "shader": "textured",
+          "pipelineState": {
+            "faceCulling": {
+              "enabled": false
+            },
+            "depthTesting": {
+              "enabled": true
+            }
+          },
+          "tint": [1, 1, 1, 1],
+          "texture": "home",
+          "sampler": "default"
         }
       }
     },
@@ -150,8 +167,8 @@
           {
             "type": "light",
             "typeOfLight": "POINT",
-            "diffuse": [1, 0, 0],
-            "specular": [1, 0, 0],
+            "diffuse": [0, 0, 1],
+            "specular": [0, 0, 1],
             "attenuation": [0.001, 0.001, 0.0001]
           }
         ],
@@ -435,6 +452,24 @@
           }
         ]
       },
+       {
+        // "rotation": [45, 45, 0],
+        "position": [0, -1, -140],
+        // "position": [0,1 , -1],
+        "scale": [0.5, 0.5, 1],
+        "components": [
+          {
+            "type": "Mesh Renderer",
+            "mesh": "enemy",
+            "material": "enemy"
+          },
+          {
+            "type": "Collision",
+            "obstucaseType": "danger",
+            "effect": 25
+          }
+        ]
+      },
       //----------------
       {
         "position": [-1, -1, -160],
@@ -651,6 +686,19 @@
             "type": "Collision",
             "obstucaseType": "danger",
             "effect": 25
+          }
+        ]
+      },
+      {
+        // "rotation": [45, 45, 0],
+        "position": [1, -1, -403],
+        // "position": [0,1 , -1],
+        "scale": [0.5, 0.5, 1],
+        "components": [
+          {
+            "type": "Mesh Renderer",
+            "mesh": "home",
+            "material": "home"
           }
         ]
       },
@@ -1332,7 +1380,7 @@
       },
       //---------------- lightSources
       {
-        "position": [0, -10, 10],
+        "position": [0, -5,-10],
         "components": [
           {
             "type": "light"
@@ -1340,10 +1388,28 @@
           {
             "type": "light",
             "typeOfLight": "POINT",
-            "diffuse": [1, 0, 0],
-            "specular": [1, 0, 0],
+            "diffuse": [0, 0, 1],
+            "specular": [0, 0, 1],
             "attenuation": [0.001, 0.001, 0.0001]
+          },
+          {
+            "type": "Movement",
+            "angularVelocity": [0, 90, 0]
           }
+        ]
+      },
+      {
+        "position": [0, -10, -40],
+        "components": [
+          {
+            "type": "light"
+          },
+          {
+            "type": "light",
+            "typeOfLight": "DIRECTIONAL",
+            "diffuse": [1, 0, 0],
+            "specular": [1, 0, 0]
+          } 
         ]
       }
     ]
