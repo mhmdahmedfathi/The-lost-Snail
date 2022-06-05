@@ -246,7 +246,7 @@ namespace our
                 
                 for (int i = 0; i < (int)lightSources.size(); i++)
                 {
-                  
+                  if(lightSources[i]->lightType >=0){
                     glm::vec3 position = lightSources[i]->getOwner()->getLocalToWorldMatrix()*glm::vec4(0,0,0,1);
                     glm::vec3 direction = lightSources[i]->getOwner()->getLocalToWorldMatrix()*glm::vec4(0,-1,0,0);
                     
@@ -258,7 +258,7 @@ namespace our
                     light_material->shader->set("lights[" + std::to_string(i) + "].attenuation", lightSources[i]->attenuation);
                     light_material->shader->set("lights[" + std::to_string(i) + "].cone_angles", lightSources[i]->cone_angles);
                     
-                }
+                }}
             }
             else
             {
