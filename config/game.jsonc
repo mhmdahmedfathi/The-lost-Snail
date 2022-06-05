@@ -691,7 +691,7 @@
       },
       {
         // "rotation": [45, 45, 0],
-        "position": [1, -1, -406],
+        "position": [1, -1, -411],
         // "position": [0,1 , -1],
         "scale": [0.5, 0.5, 1],
         "components": [
