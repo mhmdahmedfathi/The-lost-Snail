@@ -1,11 +1,8 @@
-# The Lost Snail
 
 <p align="center">
   <a href="" rel="noopener">
-    <img width=100% src="Screenshots/start.png" alt="logo"></a>
     
 
-https://user-images.githubusercontent.com/76264155/172072119-13326193-237f-42bc-8db5-5faf798986b7.mp4
 
 
 </p>
@@ -80,3 +77,10 @@ git clone https://github.com/mhmdahmedfathi/The-lost-Snail
    <img width=100% src="Screenshots/lose.png" alt="logo">
    <hr>
 </div>
+
+##📷 Quick demo
+
+
+https://user-images.githubusercontent.com/76264155/172072296-bdec87e7-fad4-4190-80f3-16d34382487a.mp4
+
+
