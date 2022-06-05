@@ -11,10 +11,7 @@
   "scene": {
     "renderer": {
       "sky": "assets/textures/galaxy.jpg",
-      "postprocess": "assets/shaders/postprocess/vignette.frag",
-      "skyTop": [0.3, 0.6, 1.0],
-      "skyMiddle": [0.3, 0.3, 0.3],
-      "skyBottom": [0.1, 0.1, 0.0]
+      "postprocess": "assets/shaders/postprocess/vignette.frag"
     },
     "assets": {
       "shaders": {
@@ -37,15 +34,15 @@
         "wood": "assets/textures/wood.jpg",
         "glass": "assets/textures/glass-panels.png",
         "monkey": "assets/textures/monkey.png",
-        "snail": "assets/textures/snail2.png",
+        "snail": "assets/textures/snail7.png",
         "floor": "assets/textures/floor.png",
         "enemy": "assets/textures/tex_mrkrabs.png",
         "coin": "assets/textures/yellowCoin.png",
         "specular": "assets/images/specular.jpg",
         "albedo": "assets/images/albedo.jpg",
-        "roughness": "assets/images/roughness.jpg"
+        "roughness": "assets/images/roughness.jpg",
         // "home:": "assets/textures/home.png"
-        // "sponge:": "assets/textures/sponge.png"
+        "sponge:": "assets/textures/sponge.png"
       },
       "meshes": {
         "cube": "assets/models/cube.obj",
@@ -187,8 +184,8 @@
           {
             "type": "light",
             "typeOfLight": "POINT",
-            "diffuse": [1, 1, 1],
-            "specular": [1, 1, 1],
+            "diffuse": [0.4, 1, 1],
+            "specular": [0.4, 1, 1],
             "attenuation": [0.001, 0.001, 0.0001]
           }
         ],
