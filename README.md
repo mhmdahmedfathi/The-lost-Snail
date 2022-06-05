@@ -1,4 +1,4 @@
-# Crazy Tennis Game
+# The Lost Snail
 
 <p align="center">
   <a href="" rel="noopener">
