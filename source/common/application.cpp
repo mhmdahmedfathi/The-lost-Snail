@@ -350,7 +350,7 @@ int our::Application::run(int run_for_frames)
             ImGui::Begin(" ");
 
             ImGuiStyle *style = &ImGui::GetStyle();
-            style->WindowMenuButtonPosition=ImGuiDir_None;
+            style->WindowMenuButtonPosition = ImGuiDir_None;
 
             ImVec4 *colors = style->Colors;
             colors[ImGuiCol_WindowBg] = ImVec4(0.0f, 0.0f, 0.0f, 0.0f);
@@ -361,7 +361,7 @@ int our::Application::run(int run_for_frames)
             colors[ImGuiCol_TitleBg] = ImVec4(0.0f, 0.0f, 0.0f, 0.0f);
             colors[ImGuiCol_TitleBgActive] = ImVec4(0.0f, 0.0f, 0.0f, 0.0f);
             colors[ImGuiCol_TitleBgCollapsed] = ImVec4(0.0f, 0.0f, 0.0f, 0.0f);
-          
+
             ImGui::PushFont(font5);
             ImGui::SetCursorPosX(0);
 
@@ -397,12 +397,17 @@ int our::Application::run(int run_for_frames)
             ImVec4 *colors = style->Colors;
             colors[ImGuiCol_WindowBg] = ImVec4(0.0f, 0.0f, 0.0f, 0.6f);
             ImGui::SetNextWindowSize(ImVec2(1500, 100));
-
             ImGui::SetCursorPosX((ImGui::GetWindowSize().x - ImGui::CalcTextSize("GAME OVER").x) * 0.2);
             ImGui::SetCursorPosY((ImGui::GetWindowSize().y - ImGui::CalcTextSize("GAME OVER").y) * 0.2);
-
             ImGui::PushFont(font3);
-            ImGui::Text("GAME OVER");
+            if (loser)
+                ImGui::Text("GAME OVER");
+            else
+            {
+                ImGui::SetCursorPosX((ImGui::GetWindowSize().x - ImGui::CalcTextSize("GOOD JOB!").x) * 0.5);
+                ImGui::SetCursorPosY((ImGui::GetWindowSize().y - ImGui::CalcTextSize("GOOD JOB!").y) * 0.2);
+                ImGui::Text("GOOD JOB!");
+            }
             ImGui::PopFont();
 
             ImGui::SetCursorPosX((ImGui::GetWindowSize().x - ImGui::CalcTextSize("GAME OVER").x) * 0.4);
