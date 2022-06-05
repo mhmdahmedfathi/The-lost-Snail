@@ -182,7 +182,7 @@ namespace our
             // if light component
             if (auto lightComp = entity->getComponent<LightComponent>(); lightComp)
             {
-                lightEntities.push_back(entity);
+                lightSources.push_back(lightComp);
             }
         }
 
@@ -233,46 +233,38 @@ namespace our
         glm::mat4 MVP_O;
         for (auto command : opaqueCommands)
         {
-            ShaderProgram *lightShader = command.material->shader;
-            command.material->setup();
-            //??not sure
-            if (!lightShader)
-                continue;
+             command.material->setup();
             MVP_O = VP * command.localToWorld;
-            command.material->shader->set("transform", MVP_O);
-            int i = 0;
-            //---
-            lightShader->set("VP", VP);
-            lightShader->set("M", command.localToWorld);
-            lightShader->set("eye", eye);
-            lightShader->set("M_IT", glm::transpose(glm::inverse(command.localToWorld)));
-            
             if (auto light_material = dynamic_cast<LitMaterial *>(command.material); light_material)
             {
-                lightShader->set("light_count", (int)lightEntities.size());
-                for (int i = 0; i < lightEntities.size(); i++)
-                {
-                    LightComponent *lightSource = lightEntities[i]->getComponent<LightComponent>();
-                    //- set light data in the shader
-                    glm::vec3 rotation = lightEntities[i]->localTransform.rotation;
-                    glm::vec3 position = lightEntities[i]->getLocalToWorldMatrix()*glm::vec4(0,0,0,1);
-                    glm::vec3 direction = lightEntities[i]->getLocalToWorldMatrix()*glm::vec4(0,-1,0,0);
                     
-                    lightShader->set("lights[" + std::to_string(i) + "].direction",direction);
-                    lightShader->set("lights[" + std::to_string(i) + "].type", lightSource->lightType);
-                    lightShader->set("lights[" + std::to_string(i) + "].position", position);
-                    //   lightShader->set("lights["+std::to_string(i)+"].direction", lightEntities[i]->localTransform.rotation);
-                    lightShader->set("lights[" + std::to_string(i) + "].diffuse", lightSource->diffuse);
-                    lightShader->set("lights[" + std::to_string(i) + "].specular", lightSource->specular);
-                    lightShader->set("lights[" + std::to_string(i) + "].attenuation", lightSource->attenuation);
-                    lightShader->set("lights[" + std::to_string(i) + "].cone_angles", glm::vec2(lightSource->cone_angles.x, lightSource->cone_angles.y));
-                    i++;
+                light_material->shader->set("VP", VP);
+                light_material->shader->set("M", command.localToWorld);
+                light_material->shader->set("eye", eye);
+                light_material->shader->set("M_IT", glm::transpose(glm::inverse(command.localToWorld)));
+                light_material->shader->set("light_count", (int)lightSources.size());
+                
+                for (int i = 0; i < (int)lightSources.size(); i++)
+                {
+                  
+                    glm::vec3 position = lightSources[i]->getOwner()->getLocalToWorldMatrix()*glm::vec4(0,0,0,1);
+                    glm::vec3 direction = lightSources[i]->getOwner()->getLocalToWorldMatrix()*glm::vec4(0,-1,0,0);
+                    
+                    light_material->shader->set("lights[" + std::to_string(i) + "].direction",direction);
+                    light_material->shader->set("lights[" + std::to_string(i) + "].type", lightSources[i]->lightType);
+                    light_material->shader->set("lights[" + std::to_string(i) + "].position", position); 
+                    light_material->shader->set("lights[" + std::to_string(i) + "].diffuse", lightSources[i]->diffuse);
+                    light_material->shader->set("lights[" + std::to_string(i) + "].specular", lightSources[i]->specular);
+                    light_material->shader->set("lights[" + std::to_string(i) + "].attenuation", lightSources[i]->attenuation);
+                    light_material->shader->set("lights[" + std::to_string(i) + "].cone_angles", lightSources[i]->cone_angles);
+                    
                 }
             }
-                            // sky:
-            lightShader->set("sky.top", skyTop);
-            lightShader->set("sky.middle", skyMiddle);
-            lightShader->set("sky.below", skyBottom);
+            else
+            {
+                command.material->shader->set("transform", MVP_O);
+            }
+                        
             command.mesh->draw();
         }
 
