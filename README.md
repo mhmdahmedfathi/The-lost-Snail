@@ -3,7 +3,11 @@
 <p align="center">
   <a href="" rel="noopener">
     <img width=100% src="Screenshots/start.png" alt="logo"></a>
-    <img src="Screenshots/ToEnd.gif" width="400" height="400" />
+    
+
+https://user-images.githubusercontent.com/76264155/172072119-13326193-237f-42bc-8db5-5faf798986b7.mp4
+
+
 </p>
 <p align="center">
     <br> 
@@ -20,7 +24,7 @@
 
 ## About
 
- Help the Snail to return to its planet after being lost in the galaxy.
+ Help the Snail to return to its home after being lost in the galaxy.
  Help him by avoid collision with Mr Craps and Make him get more coins to get new high score.
 
 
