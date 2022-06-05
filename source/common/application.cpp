@@ -419,7 +419,6 @@ int our::Application::run(int run_for_frames)
             ImGui::PushFont(font4);
             std::string l1 = "SCORE: ";
             std::string l2 = std::to_string(score);
-            // std::string l3 = "%%";
             std::string totalLine = l1 + l2;
             ImGui::Text(totalLine.c_str());
 

@@ -9,14 +9,6 @@
 
 #include "states/play-state.hpp"
 #include "states/menu-state.hpp"
-#include "states/mesh-test-state.hpp"
-#include "states/transform-test-state.hpp"
-#include "states/pipeline-test-state.hpp"
-#include "states/texture-test-state.hpp"
-#include "states/sampler-test-state.hpp"
-#include "states/material-test-state.hpp"
-#include "states/entity-test-state.hpp"
-#include "states/renderer-test-state.hpp"
 
 int main(int argc, char** argv) {
     
@@ -63,13 +55,3 @@ int main(int argc, char** argv) {
 }
 
 
-
-    
-    // app.registerState<MeshTestState>("mesh-test");
-    // app.registerState<TransformTestState>("transform-test");
-    // app.registerState<PipelineTestState>("pipeline-test");
-    // app.registerState<TextureTestState>("texture-test");
-    // app.registerState<SamplerTestState>("sampler-test");
-    // app.registerState<MaterialTestState>("material-test");
-    // app.registerState<EntityTestState>("entity-test");
-    // app.registerState<RendererTestState>("renderer-test");
