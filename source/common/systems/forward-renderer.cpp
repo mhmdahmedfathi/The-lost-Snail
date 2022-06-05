@@ -252,6 +252,7 @@ namespace our
                     glm::vec3 direction = lightSources[i]->getOwner()->getLocalToWorldMatrix()*glm::vec4(0,-1,0,0);
                     
                     light_material->shader->set("lights[" + std::to_string(i) + "].direction",direction);
+                    light_material->shader->set("lights[" + std::to_string(i) + "].color",lightSources[i]->color);
                     light_material->shader->set("lights[" + std::to_string(i) + "].type", lightSources[i]->lightType);
                     light_material->shader->set("lights[" + std::to_string(i) + "].position", position); 
                     light_material->shader->set("lights[" + std::to_string(i) + "].diffuse", lightSources[i]->diffuse);
