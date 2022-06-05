@@ -150,8 +150,8 @@
           {
             "type": "light",
             "typeOfLight": "POINT",
-            "diffuse": [1, 0, 0],
-            "specular": [1, 0, 0],
+            "diffuse": [0, 0, 1],
+            "specular": [0, 0, 1],
             "attenuation": [0.001, 0.001, 0.0001]
           }
         ],
@@ -1332,7 +1332,7 @@
       },
       //---------------- lightSources
       {
-        "position": [0, -10, 10],
+        "position": [0, -5,-10],
         "components": [
           {
             "type": "light"
@@ -1340,10 +1340,28 @@
           {
             "type": "light",
             "typeOfLight": "POINT",
-            "diffuse": [1, 0, 0],
-            "specular": [1, 0, 0],
+            "diffuse": [0, 0, 1],
+            "specular": [0, 0, 1],
             "attenuation": [0.001, 0.001, 0.0001]
+          },
+          {
+            "type": "Movement",
+            "angularVelocity": [0, 90, 0]
           }
+        ]
+      },
+      {
+        "position": [0, -10, -40],
+        "components": [
+          {
+            "type": "light"
+          },
+          {
+            "type": "light",
+            "typeOfLight": "DIRECTIONAL",
+            "diffuse": [1, 0, 0],
+            "specular": [1, 0, 0]
+          } 
         ]
       }
     ]
