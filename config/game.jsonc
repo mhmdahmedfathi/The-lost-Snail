@@ -29,31 +29,20 @@
         }
       },
       "textures": {
-        "moon": "assets/textures/moon.jpg",
-        "grass": "assets/textures/grass_ground_d.jpg",
-        "wood": "assets/textures/wood.jpg",
-        "glass": "assets/textures/glass-panels.png",
-        "monkey": "assets/textures/monkey.png",
         "snail": "assets/textures/snail7.png",
         "floor": "assets/textures/floor.png",
         "enemy": "assets/textures/tex_mrkrabs.png",
         "coin": "assets/textures/yellowCoin.png",
-        "specular": "assets/textures/specular.jpg",
-        "albedo": "assets/images/albedo.jpg",
-        "roughness": "assets/textures/roughness.jpg",
-        "yellow": "assets/textures/yellow2.png"
-        // "home:": "assets/textures/home.png"
+        "yellow": "assets/textures/yellow2.png",
+        "white": "assets/textures/white.png",
+        "galaxy_gradient": "assets/textures/galaxy_gradient.jpg"
       },
       "meshes": {
-        "cube": "assets/models/cube.obj",
-        "monkey": "assets/models/monkey.obj",
         "plane": "assets/models/plane.obj",
-        "sphere": "assets/models/sphere.obj",
         "snail": "assets/models/gray_snail.obj",
         "floor": "assets/models/floor.obj",
         "enemy": "assets/models/mrkrabs.obj",
         "coin": "assets/models/yellowCoin.obj"
-        // "home": "assets/models/home.obj"
       },
       "samplers": {
         "default": {},
@@ -77,7 +66,10 @@
           "texture": "snail",
           "sampler": "default",
           "albedo": "snail",
-          "specular":"roughness"
+          "specular": "white",
+          "roughness": "galaxy_gradient",
+          "emissive": "black",
+          "ambient_occlusion":"white"
         },
         "enemy": {
           "type": "textured",
@@ -124,38 +116,9 @@
           "texture": "coin",
           "sampler": "default",
           "albedo": "coin",
-          "specular":"yellow"
+          "specular": "yellow"
         }
-        // "home": {
-        //   "type": "textured",
-        //   "shader": "textured",
-        //   "pipelineState": {
-        //     "faceCulling": {
-        //       "enabled": false
-        //     },
-        //     "depthTesting": {
-        //       "enabled": true
-        //     }
-        //   },
-        //   "tint": [1, 1, 1, 1],
-        //   "texture": "home",
-        //   "sampler": "default"
-        // },
-        // "sponge": {
-        //   "type": "textured",
-        //   "shader": "textured",
-        //   "pipelineState": {
-        //     "faceCulling": {
-        //       "enabled": false
-        //     },
-        //     "depthTesting": {
-        //       "enabled": true
-        //     }
-        //   },
-        //   "tint": [1, 1, 1, 1],
-        //   "texture": "sponge",
-        //   "sampler": "default"
-        // }
+        
       }
     },
     "world": [
@@ -175,15 +138,13 @@
           {
             "type": "Movement",
             "linearVelocity": [0, 0, -10]
-          }
-          ,
+          },
           {
             "type": "light",
             "typeOfLight": "DIRECTIONAL",
             "diffuse": [0, 1, 0],
             "specular": [0, 1, 0]
-          }
-          ,
+          },
           {
             "type": "light",
             "typeOfLight": "POINT",
@@ -690,7 +651,7 @@
             "effect": 25
           }
         ]
-      },  
+      },
       //--------------------- coins
       {
         "rotation": [0, 45, 0],
@@ -1369,34 +1330,21 @@
       },
       //---------------- lightSources
       {
-        "position": [2, 0, 0],
+        "position": [0, -10, 10],
         "components": [
           {
-            "position": [2, 0, 0],
+            "type": "light"
+          },
+          {
             "type": "light",
-            "typeOfLight": "DIRECTIONAL",
-            "diffuse": [1, 1, 1],
-            "specular": [1, 1, 1],
-            "cone_angles.inner": 10,
-            "cone-angles.outer": 50
+            "typeOfLight": "POINT",
+            "diffuse": [1, 0, 0],
+            "specular": [1, 0, 0],
+            "attenuation": [0.001, 0.001, 0.0001]
           }
         ]
       }
-      // {
-      //      "position":[ 1, 0, 0],
-      //     "components": [
-      //         {
-      //             "type": "light",
-      //             "position":[ 1, 0, 0],
-      //             "typeOfLight":"SPOT",
-      //             "diffuse":[ 1, 0.9, 0.7],
-      //             "specular":[ 1, 0.9, 0.7],
-      //             "cone_angles":[10.0,11.0]
-      //            // "cone_angles.inner":10.0,
-      //             //"cone-angles.outer":11.0
-      //         }
-      //     ]
-      // },
+      
     ]
   }
 }
