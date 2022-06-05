@@ -298,8 +298,10 @@ int our::Application::run(int run_for_frames)
         if (currentState == states["main_menu"])
         {
             ImGui::SetNextWindowSize(ImVec2(700, 500));
-            ImGui::Begin("Main menu");
+            ImGui::Begin("Main menu", nullptr, ImGuiWindowFlags_NoMove);
+
             ImGuiStyle *style = &ImGui::GetStyle();
+            style->WindowMenuButtonPosition = ImGuiDir_None;
             ImVec4 *colors = style->Colors;
             colors[ImGuiCol_Button] = ImVec4(128.0f / 256, 0.0f, 128.0f / 256, 1.0f);
             colors[ImGuiCol_ButtonActive] = ImVec4(110.0f / 256, 0.0f, 110.0f / 256, 1.0f);
@@ -346,11 +348,11 @@ int our::Application::run(int run_for_frames)
             if (abs(start_time - end_time) >= 60 || loser)
                 changeState("game_over");
 
-            ImGui::SetNextWindowSize(ImVec2(1280, 150));
-            ImGui::Begin(" ");
+            ImGui::SetNextWindowSize(ImVec2(1280, 200));
+            ImGui::Begin(" ", nullptr, ImGuiWindowFlags_NoMove);
+            ImGui::SetWindowPos(" ", ImVec2(0, 0));
 
             ImGuiStyle *style = &ImGui::GetStyle();
-            style->WindowMenuButtonPosition = ImGuiDir_None;
 
             ImVec4 *colors = style->Colors;
             colors[ImGuiCol_WindowBg] = ImVec4(0.0f, 0.0f, 0.0f, 0.0f);
@@ -377,7 +379,6 @@ int our::Application::run(int run_for_frames)
             ImGui::Text(countdown.c_str());
             ImGui::PopFont();
 
-            // ImGui::ProgressBar(score, ImVec2(280, 40));
             ImGui::SetCursorPosX(960);
             ImGui::SetCursorPosY(60);
 
@@ -392,6 +393,10 @@ int our::Application::run(int run_for_frames)
         }
         else
         {
+
+            ImGui::SetNextWindowSize(ImVec2(1000, 1000));
+            ImGui::Begin(" ", nullptr, ImGuiWindowFlags_NoMove);
+            ImGui::SetWindowPos(" ", ImVec2(150, -150));
 
             ImGuiStyle *style = &ImGui::GetStyle();
             ImVec4 *colors = style->Colors;
@@ -412,7 +417,7 @@ int our::Application::run(int run_for_frames)
 
             ImGui::SetCursorPosX((ImGui::GetWindowSize().x - ImGui::CalcTextSize("GAME OVER").x) * 0.4);
             ImGui::PushFont(font4);
-            std::string l1 = "Score: ";
+            std::string l1 = "SCORE: ";
             std::string l2 = std::to_string(score);
             // std::string l3 = "%%";
             std::string totalLine = l1 + l2;
@@ -421,7 +426,7 @@ int our::Application::run(int run_for_frames)
             ImGui::PopFont();
 
             ImGui::SetCursorPosX((ImGui::GetWindowSize().x - ImGui::CalcTextSize("Restart the game").x) * 0.4);
-            ImGui::SetCursorPosY((ImGui::GetWindowSize().y - ImGui::CalcTextSize("Restart the game").y) * 0.6);
+            ImGui::SetCursorPosY((ImGui::GetWindowSize().y - ImGui::CalcTextSize("Restart the game").y) * 0.55);
 
             if (ImGui::Button("Restart the game", ImVec2(380, 120)))
             {
@@ -439,6 +444,7 @@ int our::Application::run(int run_for_frames)
             {
                 return 0; // Good bye
             }
+            ImGui::End();
         }
 
         // If ImGui is using the mouse or keyboard, then we don't want the captured events to affect our keyboard and mouse objects.
