@@ -3,7 +3,7 @@
 <p align="center">
   <a href="" rel="noopener">
     <img width=100% src="Screenshots/start.png" alt="logo"></a>
-    <img src="Screenshots/ToEnd.gif" width="40" height="40" />
+    <img src="Screenshots/ToEnd.gif" width="400" height="400" />
 </p>
 <p align="center">
     <br> 
