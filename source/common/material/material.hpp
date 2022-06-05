@@ -55,7 +55,7 @@ namespace our {
 
     // lighting material class
     
-    class LitMaterial : public Material {
+    class LitMaterial : public TexturedMaterial {
     public:
         Texture2D* albedo;
         Texture2D* specular;

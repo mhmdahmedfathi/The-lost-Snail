@@ -62,7 +62,7 @@ namespace our {
     }
     //------------ lit material -------------------
      void LitMaterial::setup() const {
-        Material::setup(); 
+        TexturedMaterial::setup(); 
         if (albedo ){
         glActiveTexture(GL_TEXTURE0);  
         albedo->bind();
@@ -99,7 +99,7 @@ namespace our {
     // This function read the material data from a json object
     void LitMaterial::deserialize(const nlohmann::json& data){
 
-        Material::deserialize(data); 
+        TexturedMaterial::deserialize(data); 
 
         if(!data.is_object()) return;
 
