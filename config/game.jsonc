@@ -41,9 +41,8 @@
         "specular": "assets/textures/specular.jpg",
         "albedo": "assets/images/albedo.jpg",
         "roughness": "assets/textures/roughness.jpg",
-        "yellow": "assets/textures/yellow.png",
+        "yellow": "assets/textures/yellow2.png"
         // "home:": "assets/textures/home.png"
-        "sponge:": "assets/textures/sponge.png"
       },
       "meshes": {
         "cube": "assets/models/cube.obj",
@@ -55,7 +54,6 @@
         "enemy": "assets/models/mrkrabs.obj",
         "coin": "assets/models/yellowCoin.obj"
         // "home": "assets/models/home.obj"
-        // "sponge": "assets/models/sponge.obj"
       },
       "samplers": {
         "default": {},
