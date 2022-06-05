@@ -166,9 +166,9 @@
                              
                                "type": "light",
                                "typeOfLight":"DIRECTIONAL",
-                               "diffuse":[ 0.4, 1, 1],
-                               "specular":[  0.4, 1, 1],
-                               "attenuation":[0.001,0.001,0.0001]
+                               "diffuse":[ 1, 1, 1],
+                               "specular":[ 1, 1, 1]
+ 
                            
                    }
                 ],
@@ -771,7 +771,7 @@
                         "typeOfLight":"POINT",
                         "diffuse":[ 0.4, 1, 1],
                         "specular":[  0.4, 1, 1],
-                        "attenuation":[0.001,0.001,0.0001]
+                        "attenuation":[0.1,0.1,0.01]
                     
                       }
                  ]
@@ -795,7 +795,16 @@
                        "type": "Movement",
                        "angularVelocity": [0, 90, 0]
            
-                    }
+                    },
+                    {  
+                             
+                        "type": "light",
+                        "typeOfLight":"POINT",
+                        "diffuse":[ 0.4, 1, 1],
+                        "specular":[  0.4, 1, 1],
+                        "attenuation":[0.001,0.001,0.0001]
+                    
+                      }
                 ]
             },
             {
