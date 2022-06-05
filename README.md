@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="" rel="noopener">
- <img width=100% src="Screenshots/logo.jpg" alt="logo"></a>
+ <img width=100% src="Screenshots/start.png" alt="logo"></a>
 </p>
 <p align="center">
     <br> 
