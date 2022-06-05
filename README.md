@@ -3,7 +3,7 @@
 <p align="center">
   <a href="" rel="noopener">
     <img width=100% src="Screenshots/start.png" alt="logo"></a>
-    ![During Game](https://github.com/mhmdahmedfathi/The-lost-Snail/blob/main/Screenshots/ToEnd.gif)
+    <img src="Screenshots/ToEnd.gif" width="40" height="40" />
 </p>
 <p align="center">
     <br> 
