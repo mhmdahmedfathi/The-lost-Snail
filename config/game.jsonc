@@ -79,7 +79,9 @@
                     "tint": [1, 1, 1, 1],
                     "texture": "snail",
                     "sampler": "default",
-                    "albedo":"snail"
+                    "specular":"specular",
+                    "albedo":"albedo",
+                    "roughness":"roughness"
                 },
                 "enemy":{
                     "type": "textured",
@@ -161,16 +163,7 @@
                     {
                         "type": "Movement",
                         "linearVelocity": [0,0,-10]
-                    },
-                    {  
-                             
-                               "type": "light",
-                               "typeOfLight":"DIRECTIONAL",
-                               "diffuse":[ 1, 1, 1],
-                               "specular":[ 1, 1, 1]
- 
-                           
-                   }
+                    }
                 ],
                 "children": [{
                     "position": [0, 2.5, -5],
@@ -765,15 +758,15 @@
                         "angularVelocity": [0, 90, 0]
             
                      },
-                     {  
-                             
-                        "type": "light",
-                        "typeOfLight":"POINT",
-                        "diffuse":[ 0.4, 1, 1],
-                        "specular":[  0.4, 1, 1],
-                        "attenuation":[0.1,0.1,0.01]
-                    
-                      }
+                     {
+                      
+                           "type": "light",
+                           "typeOfLight":"POINT",
+                           "diffuse":[ 0.4, 1, 1],
+                           "specular":[ 0.4, 1, 1],
+                           "attenuation":[0.01, 0.01,0.001]
+                       }
+                   
                  ]
              },
              {
@@ -796,15 +789,14 @@
                        "angularVelocity": [0, 90, 0]
            
                     },
-                    {  
-                             
+                    {
+                      
                         "type": "light",
                         "typeOfLight":"POINT",
                         "diffuse":[ 0.4, 1, 1],
-                        "specular":[  0.4, 1, 1],
-                        "attenuation":[0.001,0.001,0.0001]
-                    
-                      }
+                        "specular":[ 0.4, 1, 1],
+                        "attenuation":[0.01, 0.01,0.001]
+                    }
                 ]
             },
             {
@@ -826,6 +818,14 @@
                        "type": "Movement",
                        "angularVelocity": [0, 90, 0]
            
+                    },
+                    {
+                      
+                        "type": "light",
+                        "typeOfLight":"POINT",
+                        "diffuse":[ 0.4, 1, 1],
+                        "specular":[ 0.4, 1, 1],
+                        "attenuation":[0.01, 0.01,0.001]
                     }
                 ]
             } ,
@@ -848,6 +848,14 @@
                        "type": "Movement",
                        "angularVelocity": [0, 90, 0]
            
+                    },
+                    {
+                      
+                        "type": "light",
+                        "typeOfLight":"POINT",
+                        "diffuse":[ 0.4, 1, 1],
+                        "specular":[ 0.4, 1, 1],
+                        "attenuation":[0.01, 0.01,0.001]
                     }
                 ]
             } ,
@@ -1291,23 +1299,23 @@
           
                    }
                ]
-           } 
+           } ,
            //---------------- lightSources
-        //    {   
-        //     "position":[ 2, 0, 0],
-        //     "components": [
-        //         {
-        //             "position":[ 2, 0, 0],
-        //             "type": "light",
-        //             "typeOfLight":"DIRECTIONAL",
-        //             "diffuse":[ 1, 1, 1],
-        //             "specular":[1, 1, 1],
-        //             "cone_angles.inner":10,
-        //             "cone-angles.outer":50
-        //         }
-        //     ]
+           {   
+            "position":[ 2, 0, 0],
+            "components": [
+                {
+                    "position":[ 2, 0, 0],
+                    "type": "light",
+                    "typeOfLight":"DIRECTIONAL",
+                    "diffuse":[ 1, 1, 1],
+                    "specular":[1, 1, 1],
+                    "cone_angles.inner":10,
+                    "cone-angles.outer":50
+                }
+            ]
 
-        // },
+        }
         // {  
         //      "position":[ 1, 0, 0],
         //     "components": [
@@ -1323,7 +1331,7 @@
         //         }
         //     ]
         // },
-      
+       
         ] 
        
       
