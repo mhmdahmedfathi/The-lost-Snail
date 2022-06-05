@@ -44,7 +44,6 @@ namespace our
         TexturedMaterial* postprocessMaterial;
         // Objects used to support lighting
         std::vector<LightComponent*> lightSources;
-        std::vector<Entity*> lightEntities;
         LitMaterial* lightMaterial;
         glm::vec3 skyTop;
         glm::vec3 skyMiddle;

@@ -22,17 +22,12 @@ namespace our {
         glm::vec4 color;
         glm::vec3 attenuation; // x*d^2 + y*d + z
         glm::vec2 cone_angles; // x: inner_angle, y: outer_angle
-        glm::vec3 initPosition;
-        glm::vec3 initDirection;
-        glm::vec3 position;
-        glm::vec3 direction;
         std::string lightTypeStr;
         // Reads light parameters from the given json object
         void deserialize(const nlohmann::json& data) override;
+        // identify it is a light component
         static std::string getID() { return "light"; }
 
-        void calculatePosition (  glm::mat4 localToWorld );
-        void calculateDirection(  glm::mat4 localToWorld);
     };
 
 }

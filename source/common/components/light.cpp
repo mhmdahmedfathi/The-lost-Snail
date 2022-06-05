@@ -24,37 +24,18 @@ namespace our
             lightType =2;
 
        
-        diffuse = glm::vec3(data.value("diffuse", glm::vec3(1, 0.9, 0.7)));
-        specular = glm::vec3(data.value("specular", glm::vec3(1, 0.9, 0.7)));
+        diffuse = glm::vec3(data.value("diffuse", glm::vec3(1, 1, 1)));
+        specular = glm::vec3(data.value("specular", glm::vec3(1, 1, 1)));
+        if (lightType != 0)
+        {
         attenuation = glm::vec3(data.value("attenuation", glm::vec3(1, 0, 0)));
-        // cone_angles = glm::vec2(data.value("cone_angles", glm::vec2(glm::radians(90.0f), glm::radians(120.0f))));
+        }
+
+        if (lightType ==2)
+        {  
         cone_angles.x = glm::radians((float)data.value("cone_angles.in",10));
         cone_angles.y = glm::radians((float)data.value("cone_angles.out",80));
-        // I didn't assign default values (second parameter of data.value)
-        // diffuse = data.value("diffuse",diffuse);
-        // specular = data.value("specular",specular);
-        // color = data.value("color", color);
-        // // initPosition = data.value("position", initPosition);
-        // // initDirection = data.value("direction", initDirection);
-
-        // if (lightType != 0)
-        // {
-        //     attenuation = data.value("attenuation",attenuation);
-        // }
-
-        // if (lightType ==2)
-        // {
-        //   //  glm::vec2 angles =
-        //   cone_angles =  data.value("cone_angles",cone_angles);
-        //   //glm::radians(angles[0]), glm::radians(angles[1]);
-        // }
+        }
     }
-    void LightComponent::calculatePosition(glm::mat4 localToWorld)
-    {
-        position = glm::vec3(localToWorld * glm::vec4(initPosition, 1));
-    }
-    void LightComponent::calculateDirection(glm::mat4 localToWorld)
-    {
-        direction = glm::vec3(localToWorld * glm::vec4(initDirection, 0));
-    }
+    
 }

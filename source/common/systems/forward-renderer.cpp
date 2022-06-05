@@ -103,25 +103,6 @@ namespace our
             // so it is more performant to disable the depth mask
             postprocessMaterial->pipelineState.depthMask = false;
         }
-        // lighting
-        //  if (config.contains("lightSources"))
-        //  {
-        //     std::cout<<"entered"<<std::endl;
-        //     for(const auto& lightData : config.array())
-        //     {
-        //     LightComponent* light = new LightComponent();
-        //     lightSources.insert(light);
-        //     light->deserialize(lightData);
-        //     }
-        //     // Create the light shader
-        //     ShaderProgram *lightShader = new ShaderProgram();
-        //     lightShader->attach("assets/shaders/lighted.vert", GL_VERTEX_SHADER);
-        //     lightShader->attach(config.value<std::string>("lighted", ""), GL_FRAGMENT_SHADER);
-        //     lightShader->link();
-        //      // Create the light material
-        //     lightMaterial = new LitMaterial();
-        //     lightMaterial->shader = lightShader;
-        //  }
     }
 
     void ForwardRenderer::destroy()
@@ -180,7 +161,7 @@ namespace our
                     opaqueCommands.push_back(command);
                 }
             }
-            // if light component
+            // if light component store it
             if (auto lightComp = entity->getComponent<LightComponent>(); lightComp)
             {
                 lightSources.push_back(lightComp);
@@ -236,6 +217,7 @@ namespace our
         {
              command.material->setup();
             MVP_O = VP * command.localToWorld;
+            // if the material of the object is lighted
             if (auto light_material = dynamic_cast<LitMaterial *>(command.material); light_material)
             {
                     
@@ -248,6 +230,7 @@ namespace our
                 for (int i = 0; i < (int)lightSources.size(); i++)
                 {
                   if(lightSources[i]->lightType >=0){
+                      // calculate position and direction of the light source based on the object
                     glm::vec3 position = lightSources[i]->getOwner()->getLocalToWorldMatrix()*glm::vec4(0,0,0,1);
                     glm::vec3 direction = lightSources[i]->getOwner()->getLocalToWorldMatrix()*glm::vec4(0,-1,0,0);
                     
