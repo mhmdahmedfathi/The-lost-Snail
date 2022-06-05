@@ -2,8 +2,8 @@
 
 <p align="center">
   <a href="" rel="noopener">
- <img width=100% src="Screenshots/start.png" alt="logo"></a>
- <video src='Screenshots/ToEnd.mp4' width=180/>
+    <img width=100% src="Screenshots/start.png" alt="logo"></a>
+    ![During Game](https://github.com/mhmdahmedfathi/The-lost-Snail/blob/main/Screenshots/ToEnd.gif)
 </p>
 <p align="center">
     <br> 
