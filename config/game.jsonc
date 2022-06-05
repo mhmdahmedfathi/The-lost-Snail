@@ -1330,34 +1330,21 @@
       },
       //---------------- lightSources
       {
-        "position": [2, 0, 0],
+        "position": [0, -10, 10],
         "components": [
           {
-            "position": [2, 0, 0],
+            "type": "light"
+          },
+          {
             "type": "light",
-            "typeOfLight": "DIRECTIONAL",
-            "diffuse": [1, 1, 1],
-            "specular": [1, 1, 1],
-            "cone_angles.inner": 10,
-            "cone-angles.outer": 50
+            "typeOfLight": "POINT",
+            "diffuse": [1, 0, 0],
+            "specular": [1, 0, 0],
+            "attenuation": [0.001, 0.001, 0.0001]
           }
         ]
       }
-      // {
-      //      "position":[ 1, 0, 0],
-      //     "components": [
-      //         {
-      //             "type": "light",
-      //             "position":[ 1, 0, 0],
-      //             "typeOfLight":"SPOT",
-      //             "diffuse":[ 1, 0.9, 0.7],
-      //             "specular":[ 1, 0.9, 0.7],
-      //             "cone_angles":[10.0,11.0]
-      //            // "cone_angles.inner":10.0,
-      //             //"cone-angles.outer":11.0
-      //         }
-      //     ]
-      // },
+      
     ]
   }
 }
