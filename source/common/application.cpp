@@ -298,8 +298,8 @@ int our::Application::run(int run_for_frames)
         if (currentState == states["main_menu"])
         {
             ImGui::SetNextWindowSize(ImVec2(700, 500));
-            ImGui::Begin("Main menu", nullptr,ImGuiWindowFlags_NoMove);
             ImGui::SetWindowPos("Main menu", ImVec2(300, 120));
+            ImGui::Begin("Main menu", nullptr,ImGuiWindowFlags_NoMove);
 
 
             ImGuiStyle *style = &ImGui::GetStyle();
