@@ -15,7 +15,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/Yousif-Ahmed/Crazy-Tennis)](https://github.com/mhmdahmedfathi/The-lost-Snail/issues)
 [![GitHub forks](https://img.shields.io/github/forks/Yousif-Ahmed/Crazy-Tennis)](https://github.com/mhmdahmedfathi/The-lost-Snail/network)
 [![GitHub stars](https://img.shields.io/github/stars/Yousif-Ahmed/Crazy-Tennis)](https://github.com/mhmdahmedfathi/The-lost-Snail/stargazers)
-[![GitHub license](https://img.shields.io/github/license/gaserashraf/Eagle-Hunting-Game)](https://github.com/mhmdahmedfathi/The-lost-Snail/LICENSE)
+[![GitHub license](https://github.com/mhmdahmedfathi/The-lost-Snail/blob/main/LICENSE)](https://github.com/mhmdahmedfathi/The-lost-Snail/blob/main/LICENSE)
 
 </div>
 
