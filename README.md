@@ -1,26 +1,27 @@
-# The Lost Snail
 
 <p align="center">
   <a href="" rel="noopener">
-    <img width=100% src="Screenshots/start.png" alt="logo"></a>
-    <img src="Screenshots/ToEnd.gif" width="400" height="400" />
+    
+
+
+
 </p>
 <p align="center">
     <br> 
 </p>
 <div align="center">
 
-[![GitHub contributors](https://img.shields.io/github/contributors/Yousif-Ahmed/Crazy-Tennis)](https://github.com/mhmdahmedfathi/The-lost-Snail/contributors)
-[![GitHub issues](https://img.shields.io/github/issues/Yousif-Ahmed/Crazy-Tennis)](https://github.com/mhmdahmedfathi/The-lost-Snail/issues)
-[![GitHub forks](https://img.shields.io/github/forks/Yousif-Ahmed/Crazy-Tennis)](https://github.com/mhmdahmedfathi/The-lost-Snail/network)
-[![GitHub stars](https://img.shields.io/github/stars/Yousif-Ahmed/Crazy-Tennis)](https://github.com/mhmdahmedfathi/The-lost-Snail/stargazers)
-[![GitHub license](https://img.shields.io/github/license/gaserashraf/Eagle-Hunting-Game)](https://github.com/mhmdahmedfathi/The-lost-Snail/LICENSE)
+[![GitHub contributors](https://img.shields.io/github/contributors/mhmdahmedfathi/The-lost-Snail)](https://github.com/mhmdahmedfathi/The-lost-Snail/contributors)
+[![GitHub issues](https://img.shields.io/github/issues/mhmdahmedfathi/The-lost-Snail)](https://github.com/mhmdahmedfathi/The-lost-Snail/issues)
+[![GitHub forks](https://img.shields.io/github/forks/mhmdahmedfathi/The-lost-Snail)](https://github.com/mhmdahmedfathi/The-lost-Snail/network)
+[![GitHub stars](https://img.shields.io/github/stars/mhmdahmedfathi/The-lost-Snail)](https://github.com/mhmdahmedfathi/The-lost-Snail/stargazers)
+[![GitHub license](https://img.shields.io/github/license/mhmdahmedfathi/The-lost-Snail)](https://github.com/mhmdahmedfathi/The-lost-Snail/blob/main/LICENSE)
 
 </div>
 
 ## About
 
- Help the Snail to return to its planet after being lost in the galaxy.
+ Help the Snail to return to its home after being lost in the galaxy.
  Help him by avoid collision with Mr Craps and Make him get more coins to get new high score.
 
 
@@ -62,6 +63,11 @@ git clone https://github.com/mhmdahmedfathi/The-lost-Snail
 - Use *A* to move left.
 - Use *D* to move right.
 
+## 📷 Demo
+
+https://user-images.githubusercontent.com/76243256/172190044-8c906265-2c3e-4ccf-81db-7140616c1afb.mp4
+
+
 ## 📷 Screenshots
 
 <div name="Screenshots" align="center">
@@ -69,10 +75,51 @@ git clone https://github.com/mhmdahmedfathi/The-lost-Snail
    <hr>
     <img width=100% src="Screenshots/run.png" alt="logo">
     <hr>
-    if you win, you will find
+  
+   ## if you win
+
+   ## Congratulations! you helped Saree3 to return his home with SpongeBob.
+ 
+![home](https://user-images.githubusercontent.com/76243256/172072760-9dd016c8-e73b-442c-9f2f-13dbe0cd103b.png)
+  
    <img width=100% src="Screenshots/win.png" alt="logo">
    <hr>
-   else if you lose, you will find
+  
+   ## if you lose
+  
+   ## Restart the game, Saree3 still waits you so try again!
+  
    <img width=100% src="Screenshots/lose.png" alt="logo">
    <hr>
 </div>
+
+## Contributors
+<table align="center">
+  <tr>
+    <td align="center">
+    <a href="https://github.com/mariemzayn18" target="_black">
+    <img src="https://avatars.githubusercontent.com/u/76264155?v=4" width="100px;" alt="Mariem Muhammed"/>
+    <br />
+    <sub><b>Mariem Muhammed</b></sub></a>
+    </td>
+    <td align="center">
+    <a href="https://github.com/Marim1611" target="_black">
+    <img src="https://avatars.githubusercontent.com/u/76243256?v=4" width="100px;" alt="Marim Naser"/>
+    <br />
+    <sub><b>Marim Naser</b></sub></a>
+    </td>
+     <td align="center">
+    <a href="https://github.com/abeerhbadr" target="_black">
+    <img src="https://avatars.githubusercontent.com/u/56753821?v=4" width="100px;" alt="Abeer Hussein"/>
+    <br />
+    <sub><b>Abeer Hussein</b></sub></a>
+    </td>
+     <td align="center">
+    <a href="https://github.com/mhmdahmedfathi" target="_black">
+    <img src="https://avatars.githubusercontent.com/u/52926511?v=4" width="100px;" alt="Mohamed Ahmed"/>
+    <br />
+    <sub><b>Mohamed Ahmed</b></sub></a>
+    </td>
+  </tr>
+ </table>
+
