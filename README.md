@@ -88,5 +88,33 @@ git clone https://github.com/mhmdahmedfathi/The-lost-Snail
    <hr>
 </div>
 
-
+## Contributors
+<table align="center">
+  <tr>
+    <td align="center">
+    <a href="https://github.com/mariemzayn18" target="_black">
+    <img src="https://avatars.githubusercontent.com/u/76264155?v=4" width="100px;" alt="Mariem Muhammed"/>
+    <br />
+    <sub><b>Mariem Muhammed</b></sub></a>
+    </td>
+    <td align="center">
+    <a href="https://github.com/Marim1611" target="_black">
+    <img src="https://avatars.githubusercontent.com/u/76243256?v=4" width="100px;" alt="Marim Naser"/>
+    <br />
+    <sub><b>Marim Naser</b></sub></a>
+    </td>
+     <td align="center">
+    <a href="https://github.com/abeerhbadr" target="_black">
+    <img src="https://avatars.githubusercontent.com/u/56753821?v=4" width="100px;" alt="Abeer Hussein"/>
+    <br />
+    <sub><b>Abeer Hussein</b></sub></a>
+    </td>
+     <td align="center">
+    <a href="https://github.com/mhmdahmedfathi" target="_black">
+    <img src="https://avatars.githubusercontent.com/u/52926511?v=4" width="100px;" alt="Mohamed Ahmed"/>
+    <br />
+    <sub><b>Mohamed Ahmed</b></sub></a>
+    </td>
+  </tr>
+ </table>
 
