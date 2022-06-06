@@ -63,6 +63,11 @@ git clone https://github.com/mhmdahmedfathi/The-lost-Snail
 - Use *A* to move left.
 - Use *D* to move right.
 
+## 📷 Demo
+
+https://user-images.githubusercontent.com/76243256/172190044-8c906265-2c3e-4ccf-81db-7140616c1afb.mp4
+
+
 ## 📷 Screenshots
 
 <div name="Screenshots" align="center">
