@@ -299,6 +299,8 @@ int our::Application::run(int run_for_frames)
         {
             ImGui::SetNextWindowSize(ImVec2(700, 500));
             ImGui::Begin("Main menu", nullptr, ImGuiWindowFlags_NoMove);
+            ImGui::SetWindowPos(" ", ImVec2(200, 350));
+
 
             ImGuiStyle *style = &ImGui::GetStyle();
             style->WindowMenuButtonPosition = ImGuiDir_None;
