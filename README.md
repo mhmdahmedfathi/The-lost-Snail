@@ -65,7 +65,10 @@ git clone https://github.com/mhmdahmedfathi/The-lost-Snail
 
 ## 📷 Demo
 
-https://user-images.githubusercontent.com/76243256/172190044-8c906265-2c3e-4ccf-81db-7140616c1afb.mp4
+
+https://user-images.githubusercontent.com/76264155/172195072-79e177ed-3324-41ba-978c-be8727d757c9.mp4
+
+
 
 
 ## 📷 Screenshots
